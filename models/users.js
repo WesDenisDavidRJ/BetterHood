@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       },
       Events: {
-        type: DataTypes.Enum,
+        type: DataTypes.STRING,
         allowNull: true,
         len: [1]
       },
