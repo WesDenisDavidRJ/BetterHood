@@ -1,23 +1,23 @@
 module.exports = function(sequelize, DataTypes) {
     var Event = sequelize.define("Event", {
-      Description: {
+      description: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
           len: [1]
         }
       },
-      Address: {
+      address: {
         type: DataTypes.STRING,
         allowNull: false,
         len: [1]
       },
-      Date: {
+      date: {
         type: DataTypes.DATE,
         allowNull: false,
         len: [1]
       },
-      Image: {
+      image: {
         type: DataTypes.STRING,
         allowNull: false,
         len: [1]
