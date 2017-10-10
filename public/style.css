@@ -1,0 +1,125 @@
+
+div.parallax-container {
+    height: 300px;
+}
+
+#banner-title {
+    text-align: center;
+    margin-top: 120px;
+    font-family: 'Baloo Thambi', cursive;
+    font-size: 100px;
+    color: darkblue;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #FFFFFF;
+}
+
+.main-tag {
+    font-family: 'Raleway', sans-serif;
+    font-size: 50px;
+}
+
+.prom-banner-title,
+.modal-title {
+    font-family: 'Raleway', sans-serif;
+    margin: 20px;
+    font-size: 40px;
+}
+
+.main-body,
+.modal-name {
+    font-size: 20px;
+}
+
+.promise-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.promise-div {
+    width: 30%;
+    min-width: 200px;
+    margin: 10px 20px;
+
+}
+
+.promise-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+}
+
+.promise-title,
+.promise-tag {
+    margin: 0;
+}
+.prom-img {
+    width:100%;
+    min-width: 150px;
+}
+
+
+.quest-text {
+    font-size: 30px;
+}
+
+.modal-image {
+    max-width: 400px;
+}
+
+
+@media screen and (min-width: 478px) and (max-width: 990px) {
+    div.parallax-container {
+        height: 250px;
+    }
+
+    #banner-title {
+        text-align: center;
+        margin-top: 100px;
+        font-family: 'Baloo Thambi', cursive;
+        font-size: 60px;
+        color: darkblue;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #FFFFFF;
+    }
+    
+    .main-tag,
+    .prom-banner-title,
+    .modal-title {
+        font-family: 'Raleway', sans-serif;
+        font-size: 40px;
+    }
+}
+ @media screen and (max-width: 477px) {
+    div.parallax-container {
+        height: 200px;
+    }
+
+
+    #banner-title {
+        text-align: center;
+        margin-top: 100px;
+        font-family: 'Baloo Thambi', cursive;
+        font-size: 40px;
+        color: darkblue;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #FFFFFF;
+    }
+
+    .main-tag,
+    .prom-banner-title,
+    .modal-title {
+        font-family: 'Raleway', sans-serif;
+        font-size: 30px;
+    }
+
+    .quest-text {
+        font-size: 20px;
+    }
+
+    .modal-image {
+        max-width: 200px;
+    }
+    
+
+} 

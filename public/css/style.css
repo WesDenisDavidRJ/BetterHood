@@ -1,0 +1,22 @@
+div.parallax-container {
+    height: 350px;
+}
+
+.promise-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.promise-div {
+    width: 30%;
+    min-width: 200px;
+    margin: 10px 20px;
+
+}
+
+.prom-img {
+    width:100%;
+    min-width: 150px;
+}
