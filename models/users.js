@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
         len: [1]
       },
-      Events: {
+      events: {
         type: DataTypes.STRING,
         allowNull: true,
         len: [1]
