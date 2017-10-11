@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
       },
       category: {
         type: DataTypes.STRING,
-        defaultValue: "Construction"
+        defaultValue: "General Assistance"
       }
     });
     return Event;
