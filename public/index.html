@@ -5,6 +5,7 @@
     <title>BetterHood</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<<<<<<< HEAD
     <!-- Favicon -->
     <!-- <link rel="shortcut icon" type="img/png" href="assets/favicon.png"> -->
     <!-- newest jQuery -->
@@ -116,6 +117,192 @@
             $('.modal').modal();
         });
     </script>
+=======
+
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" type="img/png" href="assets/favicon.png"> -->
+
+    <!-- newest jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <!-- import Google Icons & Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Baloo+Thambi|Raleway" rel="stylesheet"> -->
+
+    <!-- materialize stylesheet -->
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" />
+
+    <!-- custom stylesheet -->
+    <link type="text/css" rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-wrapper light-blue accent-3">
+            <a href="#" class="brand-logo center">
+                <img class="responsive-img" src="assets/logo.png" alt="Logo">
+            </a>
+        </div>
+    </nav>
+
+    <!-- User Info Div -->
+    <div class="user-profile-div container row z-depth-4">
+        <div class="user-img-div center col l3">
+            <img class="user-img circle " src="assets/avatar.png" alt="Current User's Profile Pic">
+            <p class="user-name">Henry Helper</p>
+        </div>
+
+        <div class="user-stats col l6 center-align">
+            <!-- <p class="user-stats-main">My Stats:</p>
+            <div class="divider"></div> -->
+            <p class="user-stats-title">Hours Donated:</p>
+            <p class="user-hours user-stats-detail">20</p>
+            <div class="divider"></div>
+            <p class="user-stats-title">Upcoming Events:</p>
+            <p class="user-upcoming user-stats-detail">5</p>
+            <div class="divider"></div>
+            <p class="user-stats-title">Events Created:</p>
+            <p class="user-created user-stats-detail">2</p>
+            <div class="divider"></div>
+            <p class="user-stats-title">Past Events:</p>
+            <p class="user-past user-stats-detail">10</p>
+        </div>
+        <div class="button-div col s3">
+            <div class="search-btn-div">
+                <button class="waves-effect waves-light btn-large light-blue accent-3 hoverable tooltipped" type="submit" name="get-started"
+                    id="search-event" data-tooltip="Search for volunteer opportunities!">
+                    <i class="material-icons left">search</i>Search Events</button>
+            </div>
+            <div class="create-btn-div">
+                <button class="waves-effect waves-light btn-large green accent-4 hoverable tooltipped" type="submit" name="get-started" id="create-event"
+                    data-tooltip="Create a new volunteer event!">
+                    <i class="material-icons left">add_circle_outline</i>Create Event</button>
+            </div>
+        </div>
+    </div>
+    <!-- end User Info Div -->
+    <div class="divider"></div>
+
+
+    <!-- Search Events Modal -->
+    <div id="search-modal" class="modal">
+        <div class="modal-content">
+            <h4>Event Search</h4>
+            <br>
+            <!-- Start Dropdown -->
+            <!-- <p class="date-title">Event Type</p> -->
+            <div class="input-field col l12">
+                <select multiple>
+                    <option value="" disabled selected>Choose the types of events you're interested in:</option>
+                    <option value="1">General Assistance</option>
+                    <option value="2">Educational</option>
+                    <option value="3">Political</option>
+                    <option value="4">Environmental</option>
+                    <option value="5">Arts & Culture</option>
+                </select>
+                <label>Event Type</label>
+            </div>
+            <!-- End Dropdown -->
+
+            <!-- Start Datepicker -->
+            <div class="row">
+                <div class="start-date-div col l6">
+                    <!-- <p class="date-title">Start Date</p> -->
+                    <label for="start-date">Start Date</label>
+                    <input type="text" class="datepicker" value="" id="start-date">
+                </div>
+                <div class="end-date-div col l6">
+                    <!-- <p class="date-title">End Date</p> -->
+                    <label for="end-date">End Date</label>
+                    <input type="text" class="datepicker" value="" id="end-date">
+                </div>
+            </div>
+            <!-- End Datepicker -->
+
+            <!-- Start Email -->
+            <div class="row">
+                <!-- <p class="date-title">Your Zipcode</p> -->
+                <div class="input-field col l6">
+                    <input id="zipcode" type="text" class="validate" data-length="5">
+                    <label for="zipcode">Zipcode</label>
+                </div>
+            </div>
+            <button class="waves-effect waves-light btn light-blue accent-3 hoverable" type="submit" name="get-started" id="modal-search-event">
+                <i class="material-icons left">search</i>Search Events</button>
+        </div>
+    </div>
+    <!-- End Search Modal -->
+
+    <!-- Create Event Modal -->
+    <div id="create-modal" class="modal">
+        <div class="modal-content">
+            <h4>Create Event</h4>
+            <div class="row">
+                <!-- Event Name Field -->
+                <div class="input-field col l6">
+                    <input id="event-name" type="text" class="validate" data-length="40">
+                    <label for="event-name">Event Name</label>
+                </div>
+                <!-- Start Datepicker -->
+                <div class="start-date-div col l6">
+                    <!-- <p class="date-title">Start Date</p> -->
+                    <label for="start-date">Event Date:</label>
+                    <input type="text" class="datepicker" value="" id="start-date">
+                </div>
+            </div>
+            <!-- End Datepicker -->
+            <!-- Event Desctiption Field -->
+            <div class="input-field col l12">
+                <input id="event-descrip" type="text" class="validate" data-length="200">
+                <label for="event-descrip">Event Description</label>
+
+            </div>
+            <div class="input-field col l12">
+                <!-- removed class="validate" form link input field -->
+                <input id="event-descrip" type="text">
+                <label for="event-descrip">Link to Event Image</label>
+
+            </div>
+
+            <div class="row">
+                <div class="input-field col l6">
+                    <input id="event-address" type="text" class="validate" data-length="100">
+                    <label for="event-address">Street Address</label>
+                </div>
+
+                <!-- Start Zipcode -->
+                <div class="input-field col l6">
+                    <input id="zipcode" type="text" class="validate" data-length="5">
+                    <label for="zipcode">Zipcode</label>
+                </div>
+            </div>
+            <!-- Start Dropdown -->
+            <div class="input-field col l6">
+                <select>
+                    <option value="" disabled selected>Select a category for your event:</option>
+                    <option value="1">General Assistance</option>
+                    <option value="2">Educational</option>
+                    <option value="3">Political</option>
+                    <option value="4">Environmental</option>
+                    <option value="5">Arts & Culture</option>
+                </select>
+                <!-- <label>Event Type</label> -->
+            </div>
+            <!-- End Dropdown -->
+
+            <button class="waves-effect waves-light btn green accent-4 hoverable" type="submit" name="get-started" id="modal-create-event">
+                <i class="material-icons left">add_circle_outline</i>Create Event</button>
+        </div>
+    </div>
+    <!-- End Create Modal -->
+
+    <!-- Materialize JS -->
+    <script type="text/javascript" src="js/materialize.js"></script>
+    <!-- Custom Script -->
+    <script type="text/javascript" src="js/index.js"></script>
+>>>>>>> master
 </body>
 
 </html>

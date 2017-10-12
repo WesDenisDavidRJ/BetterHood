@@ -1,0 +1,56 @@
+/* * {border: 1px solid black} */
+
+.user-img {
+    max-width: 200px;
+    margin-top: 20px;
+}
+
+.user-profile-div, 
+.user-stats {
+    margin-top: 20px;
+}
+
+.user-stats-detail,
+.user-stats-title {
+    margin: 5px 0px;
+}
+
+.button-div {
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+    
+}
+
+#search-event,
+#modal-search-event,
+#create-event,
+#modal-create-event {
+    width: 100%;
+}
+
+#modal-search-event,
+#modal-create-event {
+    height: 60px;
+}
+
+
+#search-modal {
+    height: 90%;
+}
+.input-field .dropdown-content [type="checkbox"]+label {
+    top: 0; /* previously 1px; */
+    display: inline; /* previously inherits `display: inline-block;` from `[type="checkbox"]+label` */
+  }
+
+  .date-title{
+      margin: 0px;
+  }
+
+/* Create Modal */
+div.start-date-div.col.l6,
+div.end-date-div.col.l6 {
+    line-height: 1;
+}
