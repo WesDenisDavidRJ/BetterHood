@@ -1,4 +1,4 @@
-// Dependencies
+// Dependencies 
 // =============================================================
 
 // Sequelize (capital) references the standard library
