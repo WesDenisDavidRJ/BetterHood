@@ -12,6 +12,16 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
         len: [1]
       },
+      lat: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        len: [1]
+      },
+      lon: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        len: [1]
+      },
       date: {
         type: DataTypes.DATE,
         allowNull: false,
