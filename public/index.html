@@ -5,119 +5,6 @@
     <title>BetterHood</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<<<<<<< HEAD
-    <!-- Favicon -->
-    <!-- <link rel="shortcut icon" type="img/png" href="assets/favicon.png"> -->
-    <!-- newest jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- import Google Icons & Fonts -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Baloo+Thambi|Raleway" rel="stylesheet">
-    <!-- Compiled and minified CSS -->
-    <link type="text/css" rel="stylesheet" href="css/materialize.css" />
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="js/materialize.js"></script>
-    <!--  -->
-    <link type="text/css" rel="stylesheet" href="css/style.css" />
-</head>
-
-<body>
-    <!-- top parallax -->
-    <div>
-        <div class="center-align col m12 hide-on-small-only light-blue accent-3">
-            <img class="center-align" src="assets/logo-large.png" alt="Logo">
-        </div>
-        <!-- <p id="banner-title">BetterHood</p> -->
-    </div>
-    <div class="parallax-container ">
-        <div class="parallax">
-            <img src="assets/IMG_20151010_103547412.jpg">
-        </div>
-
-    </div>
-    <!-- BetterHood info -->
-    <div class="section white center-align">
-        <div class="row container ">
-            <h2 class="header main-tag">Are you looking for a way to help your "local" community?</h2>
-            <p class="grey-text text-darken-3 lighten-3 main-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel justo ut neque elementum tempus ac non nulla.
-                Maecenas eleifend dignissim aliquam. Sed vel consequat enim. Vivamus venenatis arcu vitae nulla vestibulum,
-                in convallis tellus dignissim. Praesent ac fringilla dui. Nullam sed nulla ac metus imperdiet scelerisque
-                mattis in diam.!</p>
-            <hr>
-        </div>
-        <p class="prom-banner-title">Help make our community a better place!</p>
-        <div class="row center-align promise-container">
-            <div class="col m3 hide-on-small-only center-align">
-            </div>
-
-            <div class="col m3 s6 center-align">
-                <!-- Modal Trigger -->
-                <a class="waves-effect waves-light btn-large light-blue accent-3" href="#modal1">
-                    <i class="material-icons left">people</i>Sign Up</a>
-
-                <!-- Modal Structure -->
-                <div id="modal1" class="modal modal-fixed-footer">
-                    <div class="modal-content">
-                        <h4>Modal Header</h4>
-                        <p>A bunch of text</p>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-action modal-close">Agree</a>
-                    </div>
-                </div>
-                <!-- <a id="signUp" class="waves-effect waves-light btn-large light-blue accent-3">
-                    <i class="material-icons left">people</i>Sign Up</a> -->
-            </div>
-
-            <div class="col m3 s6 center-align">
-                <a id="login" class="waves-effect waves-light btn-large green accent-4">
-                    <i class="material-icons left">transfer_within_a_station</i>Login</a>
-            </div>
-
-            <div class="col m3 hide-on-small-only center-align">
-            </div>
-
-
-        </div>
-        <div class="row container center-align">
-            <hr>
-            <!-- maybe something here -->
-            <!--                      -->
-        </div>
-        <div class="row container center-align">
-            <a class="blue-text text-lighten-3" href="#" target="_blank">API Friends List</a>
-            <span class="blue-text text-lighten-3"> | </span>
-            <a class="blue-text text-lighten-3" href="https://github.com/WesDenisDavidRJ/BetterHood" target="_blank">GitHub Repo</a>
-        </div>
-    </div>
-    <!-- bottom parallax-->
-    <div class="parallax-container">
-        <div class="parallax">
-            <img src="assets/Spring-Cleanup.jpg">
-        </div>
-    </div>
-    <!-- footer -->
-    <footer class="page-footer light-blue accent-3">
-        <div class="container center-align ">
-            © 2017 Better Hood
-        </div>
-    </footer>
-    <!-- load Materialize component js -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.js"></script>
-    <!-- Initialize Parallaz javascript -->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.parallax').parallax();
-        });
-        $(document).ready(function () {
-            // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-            $('.modal').modal();
-        });
-    </script>
-=======
 
     <!-- Favicon -->
     <!-- <link rel="shortcut icon" type="img/png" href="assets/favicon.png"> -->
@@ -142,7 +29,7 @@
     <nav>
         <div class="nav-wrapper light-blue accent-3">
             <a href="#" class="brand-logo center">
-                <img class="responsive-img" src="assets/logo.png" alt="Logo">
+                <img class="responsive-img" src="assets/logo-large.png" alt="Logo">
             </a>
         </div>
     </nav>
@@ -190,19 +77,19 @@
     <div id="search-modal" class="modal">
         <div class="modal-content">
             <h4>Event Search</h4>
-            <br>
+        
             <!-- Start Dropdown -->
             <!-- <p class="date-title">Event Type</p> -->
             <div class="input-field col l12">
-                <select multiple>
+                <select multiple id="search-category">
                     <option value="" disabled selected>Choose the types of events you're interested in:</option>
-                    <option value="1">General Assistance</option>
-                    <option value="2">Educational</option>
-                    <option value="3">Political</option>
-                    <option value="4">Environmental</option>
-                    <option value="5">Arts & Culture</option>
+                    <option value="General Assistance">General Assistance</option>
+                    <option value="Educational">Educational</option>
+                    <option value="Political">Political</option>
+                    <option value="Environmental">Environmental</option>
+                    <option value="Arts and Culture">Arts and Culture</option>
                 </select>
-                <label>Event Type</label>
+                <!-- <label>Event Type</label> -->
             </div>
             <!-- End Dropdown -->
 
@@ -211,22 +98,32 @@
                 <div class="start-date-div col l6">
                     <!-- <p class="date-title">Start Date</p> -->
                     <label for="start-date">Start Date</label>
-                    <input type="text" class="datepicker" value="" id="start-date">
+                    <input type="text" class="datepicker" value="" id="start-date-search">
                 </div>
                 <div class="end-date-div col l6">
                     <!-- <p class="date-title">End Date</p> -->
                     <label for="end-date">End Date</label>
-                    <input type="text" class="datepicker" value="" id="end-date">
+                    <input type="text" class="datepicker" value="" id="end-date-search">
                 </div>
             </div>
             <!-- End Datepicker -->
 
-            <!-- Start Email -->
+            <!-- Start Address Row -->
             <div class="row">
-                <!-- <p class="date-title">Your Zipcode</p> -->
+                <!-- <p class="user-location">Your location:</p> -->
                 <div class="input-field col l6">
-                    <input id="zipcode" type="text" class="validate" data-length="5">
-                    <label for="zipcode">Zipcode</label>
+                    <input id="street-search" type="text" class="validate">
+                    <label for="street-search">Your Street Address</label>
+                </div>
+
+                <div class="input-field col l4">
+                    <input id="city-search" type="text" class="validate">
+                    <label for="city-search">City"</label>
+                </div>
+
+                <div class="input-field col l2">
+                    <input id="state-search" type="text" class="validate" data-length="2">
+                    <label for="state-search">State (e.g. NC)</label>
                 </div>
             </div>
             <button class="waves-effect waves-light btn light-blue accent-3 hoverable" type="submit" name="get-started" id="modal-search-event">
@@ -261,37 +158,43 @@
             </div>
             <div class="input-field col l12">
                 <!-- removed class="validate" form link input field -->
-                <input id="event-descrip" type="text">
-                <label for="event-descrip">Link to Event Image</label>
+                <input id="event-image" type="text">
+                <label for="event-image">Link to Event Image</label>
 
             </div>
 
             <div class="row">
-                <div class="input-field col l6">
-                    <input id="event-address" type="text" class="validate" data-length="100">
-                    <label for="event-address">Street Address</label>
-                </div>
+                <div class="row">
+                    <div class="input-field col l6">
+                        <input id="street-create" type="text" class="validate">
+                        <label for="street-create">Event Street Address</label>
+                    </div>
 
-                <!-- Start Zipcode -->
-                <div class="input-field col l6">
-                    <input id="zipcode" type="text" class="validate" data-length="5">
-                    <label for="zipcode">Zipcode</label>
+                    <div class="input-field col l4">
+                        <input id="city-create" type="text" class="validate">
+                        <label for="city-create">City"</label>
+                    </div>
+
+                    <div class="input-field col l2">
+                        <input id="state-create" type="text" class="validate" data-length="2">
+                        <label for="state-create">State (e.g. NC)</label>
+                    </div>
                 </div>
             </div>
             <!-- Start Dropdown -->
             <div class="input-field col l6">
-                <select>
+                <select id="create-category">
                     <option value="" disabled selected>Select a category for your event:</option>
-                    <option value="1">General Assistance</option>
-                    <option value="2">Educational</option>
-                    <option value="3">Political</option>
-                    <option value="4">Environmental</option>
-                    <option value="5">Arts & Culture</option>
+                    <!-- change value to full String instead of number values  -->
+                    <option value="General Assistance">General Assistance</option>
+                    <option value="Educational">Educational</option>
+                    <option value="Political">Political</option>
+                    <option value="Environmental">Environmental</option>
+                    <option value="Arts and Culture">Arts and Culture</option>
                 </select>
                 <!-- <label>Event Type</label> -->
             </div>
             <!-- End Dropdown -->
-
             <button class="waves-effect waves-light btn green accent-4 hoverable" type="submit" name="get-started" id="modal-create-event">
                 <i class="material-icons left">add_circle_outline</i>Create Event</button>
         </div>
@@ -302,7 +205,6 @@
     <script type="text/javascript" src="js/materialize.js"></script>
     <!-- Custom Script -->
     <script type="text/javascript" src="js/index.js"></script>
->>>>>>> master
 </body>
 
 </html>

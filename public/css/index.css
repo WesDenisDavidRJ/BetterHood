@@ -5,7 +5,14 @@
     margin-top: 20px;
 }
 
-.user-profile-div, 
+.nav-wrapper {
+    height: 103px !important;
+}
+
+.user-profile-div{
+    margin-top: 60px;
+}
+
 .user-stats {
     margin-top: 20px;
 }

@@ -10,13 +10,107 @@ $(document).ready(function () {
         clear: 'Clear',
         close: 'Ok',
         closeOnSelect: false // Close upon selecting a date,
+
       });
 });
 
+//////////////////////////////////////////////////
+//
+//               Search Modal
+//
+//////////////////////////////////////////////////
 $('#search-event').on("click", function () {
     $('#search-modal').modal('open');
 });
 
+
+$('#modal-search-event').on("click", function () {
+    let searchCategory;
+    let searchStartDate;
+    let searchEndDate;
+    let searchAddress;
+    let searchObj;
+
+    if ($('#search-category').val() == "" || 
+        $('#start-date-search').val() == "" ||
+        $('#end-date-search').val() == "" ||
+        $('#street-search').val() == "" ||
+        $('#city-search').val() == "" ||
+        $('#state-search').val() == "" ) {
+            alert("PLACEHOLDER - Will pop a modal asking user to fill in info");
+        } else {
+           searchCategory = $('#search-category').val();
+           searchStartDate = $('#start-date-search').val().trim();
+           searchEndDate = $('#end-date-search').val().trim();
+           searchAddress = $('#street-search').val().trim() + "," + $('#city-search').val().trim() + "," + $('#state-search').val();
+           //probably don't need 
+           searchObj = {
+               category: searchCategory,
+               startDate: searchStartDate,
+               endDate: searchEndDate,
+               address: searchAddress
+           }
+            //clear the Event Search fields
+            let select = $('select');
+            $("form input").val("");
+            select.prop('selectedIndex', 0);
+            select.material_select();
+            $('#start-date-search').val("");
+            $('#end-date-search').val("");
+            $('#street-search').val("");
+            $('#city-search').val("");
+            $('#state-search').val("");
+        }
+    console.log("search category: " + searchCategory);
+    console.log("start date: " + searchStartDate);
+    console.log("end date: " + searchEndDate);
+    console.log("address: " + searchAddress);
+
+});
+
+//////////////////////////////////////////////////
+//
+//               Create Modal
+//
+//////////////////////////////////////////////////
+
 $('#create-event').on("click", function () {
     $('#create-modal').modal('open');
+});
+
+$('#modal-create-event').on("click", function () {
+    let searchCategory;
+    let searchStartDate;
+    let searchEndDate;
+    let searchAddress;
+
+    if ($('#search-category').val() == "" || 
+        $('#start-date-search').val() == "" ||
+        $('#end-date-search').val() == "" ||
+        $('#street-search').val() == "" ||
+        $('#city-search').val() == "" ||
+        $('#state-search').val() == "" ) {
+            alert("PLACEHOLDER - Will pop a modal asking user to fill in info");
+        } else {
+           searchCategory = $('#search-category').val();
+           searchStartDate = $('#start-date-search').val().trim();
+           searchEndDate = $('#end-date-search').val().trim();
+           searchAddress = $('#street-search').val().trim() + "," + $('#city-search').val().trim() + "," + $('#state-search').val();
+        }
+    console.log("search category: " + searchCategory);
+    console.log("start date: " + searchStartDate);
+    console.log("end date: " + searchEndDate);
+    console.log("address: " + searchAddress);
+
+    //clear the Event Search fields
+    var select = $('select');
+    $("form input").val("");
+    select.prop('selectedIndex', 0);
+    select.material_select();
+    $('#start-date-search').val("");
+    $('#end-date-search').val("");
+    $('#street-search').val("");
+    $('#city-search').val("");
+    $('#state-search').val("");
+
 });
