@@ -3,8 +3,8 @@ var db = require("../models");
 var passport = require("../config/passport")
 var accountSid = 'AC7e4e81cff80cf1d86872f2066ec1c675'; // Your Account SID from www.twilio.com/console
 var authToken = '572ee0ec91e3ff8e029b57e7b0a3ab71';   // Your Auth Token from www.twilio.com/console
-
 var twilio = require('twilio');
+
 module.exports = function(app) {
 
     app.get("/api/users/", function(req, res) {
@@ -21,7 +21,7 @@ module.exports = function(app) {
         });
       });
 
-    // Using the passport.authenticate middleware with our local strategy.
+  // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
@@ -77,24 +77,7 @@ app.get("/api/register", function(req, res) {
     res.json(tableData);
   });
 
-// GET /auth/google
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request.  The first step in Google authentication will involve
-//   redirecting the user to google.com.  After authorization, Google
-//   will redirect the user back to this application at /auth/google/callback
-app.get('/auth/google',
-passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
 
-// GET /auth/google/callback
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request.  If authentication fails, the user will be redirected back to the
-//   login page.  Otherwise, the primary route function function will be called,
-//   which, in this example, will redirect the user to the home page.
-app.get('/auth/google/callback', 
-passport.authenticate('google', { failureRedirect: '/login' }),
-function(req, res) {
-  res.redirect('/');
-});
 
   app.post("/api/users", function(req, res) {
     console.log(req.body);
@@ -130,7 +113,7 @@ function(req, res) {
 app.post("/api/register", function(req, res) {
     console.log(req.body);
     client.messages.create({
-     body: 'Hello from David',
+     body: `Hello from ${req.body.customerName}`,
      to: '+1'+req.body.phoneNumber,  // Text this number
      from: '+19197525090' // From a valid Twilio number
     }, function(err, message){
@@ -141,5 +124,5 @@ app.post("/api/register", function(req, res) {
         }
         
         });
-    })
-}
+    });
+};
