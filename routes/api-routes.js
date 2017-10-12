@@ -78,19 +78,19 @@ app.get("/api/register", function(req, res) {
   });
 
 
-
-  app.post("/api/users", function(req, res) {
-    console.log(req.body);
-    db.User.create({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      phone: req.body.phone,
-    })
-    .then(function(dbUser) {
-      res.json(dbUser);
-    });
-  });
+// //Davids post
+//   app.post("/api/users", function(req, res) {
+//     console.log(req.body);
+//     db.User.create({
+//       firstName: req.body.firstName,
+//       lastName: req.body.lastName,
+//       email: req.body.email,
+//       phone: req.body.phone,
+//     })
+//     .then(function(dbUser) {
+//       res.json(dbUser);
+//     });
+//   });
 
   app.post("/api/events", function(req, res) {
     console.log(req.body);
@@ -106,9 +106,19 @@ app.get("/api/register", function(req, res) {
     });
   });
 
-
-
-
+   // Add a user Wes update 
+  app.post("/api/users", function(req, res) {
+    console.log("New User:");
+    console.log(req.body);
+    db.User.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      phone: req.body.phone,
+    }).then(function(results) {
+      res.json(results);
+    });
+  });
 
 app.post("/api/events", function(req, res) {
     console.log(req.body);

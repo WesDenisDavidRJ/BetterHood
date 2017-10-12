@@ -8,6 +8,7 @@ var sequelize = require("../config/connection.js");
 
 // Creates a "Event" model that matches up with DB
 
+//Wes Update
 
 
     var Event = sequelize.define("Event", {
@@ -61,7 +62,7 @@ var sequelize = require("../config/connection.js");
       }
     });
 
-
+//Differnt color ??
   // Syncs with DB
 Event.sync();
 
