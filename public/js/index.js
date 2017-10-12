@@ -12,6 +12,21 @@ $(document).ready(function () {
         closeOnSelect: false // Close upon selecting a date,
 
       });
+
+      var createEvent = $('#modal-create-event');
+      var nameInput = $("#event-name");
+      var dateInput = $("#start-date");
+      var descripInput = $("#event-descrip");
+      var imageInput = $("#event-image");
+      var addressInput = $("#event-address");
+      var zipcodeInput = $("#zipcode");
+      var categoryInput = $("#category")
+
+      createEvent.on("click", function(event){
+          console.log("clicked")
+          event.preventDefault();
+          console.log(`submit clicked: ${event}`)
+      })
 });
 
 //////////////////////////////////////////////////
