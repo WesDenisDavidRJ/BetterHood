@@ -8,7 +8,7 @@ var path = require("path");
 module.exports = function(app) {
 
     app.get("/register", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/register.html"));
+        res.sendFile(path.join(__dirname, "../routes/public/register.html"));
       });
 
      

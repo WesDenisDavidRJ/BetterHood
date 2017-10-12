@@ -3,23 +3,23 @@ var LocalStrategy = require("passport-local").Strategy;
 
 var db = require("../models");
 
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+// var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
-// Use the GoogleStrategy within Passport.
-//   Strategies in Passport require a `verify` function, which accept
-//   credentials (in this case, an accessToken, refreshToken, and Google
-//   profile), and invoke a callback with a user object.
-passport.use(new GoogleStrategy({
-    clientID: 615738453035-c23tfj7fgrqro74qgup16scfogcs12ih.apps.googleusercontent.com,
-    clientSecret: cSFC342n1tUiQQqIc6q9w3j_,
-    callbackURL: "http://www.example.com/auth/google/callback"
-  },
-  function(accessToken, refreshToken, profile, done) {
-       User.findOrCreate({ googleId: profile.id }, function (err, user) {
-         return done(err, user);ya
-       });
-  }
-));
+// // Use the GoogleStrategy within Passport.
+// //   Strategies in Passport require a `verify` function, which accept
+// //   credentials (in this case, an accessToken, refreshToken, and Google
+// //   profile), and invoke a callback with a user object.
+// passport.use(new GoogleStrategy({
+//     clientID: 615738453035-c23tfj7fgrqro74qgup16scfogcs12ih.apps.googleusercontent.com,
+//     clientSecret: cSFC342n1tUiQQqIc6q9w3j_,
+//     callbackURL: "http://www.example.com/auth/google/callback"
+//   },
+//   function(accessToken, refreshToken, profile, done) {
+//        User.findOrCreate({ googleId: profile.id }, function (err, user) {
+//          return done(err, user);ya
+//        });
+//   }
+// ));
 
 // Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
 passport.use(new LocalStrategy(
