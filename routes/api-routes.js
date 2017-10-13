@@ -4,6 +4,7 @@ var passport = require("../config/passport")
 var accountSid = 'AC7e4e81cff80cf1d86872f2066ec1c675'; // Your Account SID from www.twilio.com/console
 var authToken = '572ee0ec91e3ff8e029b57e7b0a3ab71';   // Your Auth Token from www.twilio.com/console
 var twilio = require('twilio');
+const GoogleAuth = require('google-auth-library');
 
 module.exports = function(app) {
 
@@ -152,4 +153,32 @@ app.post("/api/events", function(req, res) {
         
         });
     });
+
+    // GAUTHSOME: Verify the logged-in Google user using the google-auth-library NPM package.
+    app.get('/api/auth', (req, res) => {
+      console.log('Attempting to auth');
+      const GOOGLE_CLIENT_ID = '495769109297-e2mgpt6k8ca1u9r8n248tombmr1egva1.apps.googleusercontent.com';
+      const auth = new GoogleAuth;
+      const client = new auth.OAuth2(GOOGLE_CLIENT_ID, '', '');
+      client.verifyIdToken(
+        req.query.token,
+        GOOGLE_CLIENT_ID,
+        // Or, if multiple clients access the backend:
+        //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3],
+        function (error, login) {
+          if (error) {
+            console.error(error);
+  
+            res.json({ error: error.message });
+            return;
+          }
+  
+          const payload = login.getPayload();
+          payload.valid = true;
+  
+          res.json(payload);
+        });
+  
+    });
+  
 };
