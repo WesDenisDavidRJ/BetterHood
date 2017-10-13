@@ -1,4 +1,4 @@
-
+var EventModel = require("../models/newEvents.js");
 var db = require("../models");
 var passport = require("../config/passport")
 var accountSid = 'AC7e4e81cff80cf1d86872f2066ec1c675'; // Your Account SID from www.twilio.com/console
@@ -110,7 +110,7 @@ app.get("/api/register", function(req, res) {
   app.post("/api/events", function(req, res) {
     console.log("New Event:");
     console.log(req.body);
-    Event.create({
+    EventModel.create({
       name: req.body.name,
       description: req.body.description,
       address: req.body.address,

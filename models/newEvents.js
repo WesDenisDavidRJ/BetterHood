@@ -12,7 +12,7 @@ var sequelize = require("../config/connection.js");
 //Wes Update
 
 
-    var Event = sequelize.define("Event", {
+    var EventModel = sequelize.define("event", {
       name: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -60,7 +60,7 @@ var sequelize = require("../config/connection.js");
 
 //Differnt color ??
   // Syncs with DB
-Event.sync();
+EventModel.sync();
 
-// Makes the Event Model available for other files (will also create a table)
-module.exports = Event;
+// Makes the EventModel Model available for other files (will also create a table)
+module.exports = EventModel;
