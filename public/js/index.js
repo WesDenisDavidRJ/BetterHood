@@ -9,24 +9,9 @@ $(document).ready(function () {
         today: 'Today',
         clear: 'Clear',
         close: 'Ok',
-        closeOnSelect: false // Close upon selecting a date,
-
+        closeOnSelect: false, // Close upon selecting a date,
+        format: 'mm/dd/yyyy'
       });
-
-      var createEvent = $('#modal-create-event');
-      var nameInput = $("#event-name");
-      var dateInput = $("#start-date");
-      var descripInput = $("#event-descrip");
-      var imageInput = $("#event-image");
-      var addressInput = $("#event-address");
-      var zipcodeInput = $("#zipcode");
-      var categoryInput = $("#category")
-
-      createEvent.on("click", function(event){
-          console.log("clicked")
-          event.preventDefault();
-          console.log(`submit clicked: ${event}`)
-      })
 });
 
 //////////////////////////////////////////////////
@@ -47,17 +32,18 @@ $('#modal-search-event').on("click", function () {
     let searchObj;
 
     if ($('#search-category').val() == "" || 
-        $('#start-date-search').val() == "" ||
-        $('#end-date-search').val() == "" ||
-        $('#street-search').val() == "" ||
-        $('#city-search').val() == "" ||
-        $('#state-search').val() == "" ) {
+        $('#search-start-date').val() == "" ||
+        $('#search-end-date').val() == "" ||
+        $('#search-street').val() == "" ||
+        $('#search-city').val() == "" ||
+        $('#search-state').val() == "" ) {
             alert("PLACEHOLDER - Will pop a modal asking user to fill in info");
         } else {
            searchCategory = $('#search-category').val();
-           searchStartDate = $('#start-date-search').val().trim();
-           searchEndDate = $('#end-date-search').val().trim();
-           searchAddress = $('#street-search').val().trim() + "," + $('#city-search').val().trim() + "," + $('#state-search').val();
+           searchStartDate = $('#search-start-date').val();
+           searchEndDate = $('#search-end-date').val().trim();
+           searchAddress = $('#search-street').val().trim() + ", " + $('#search-city').val().trim() + ", " + $('#search-state').val();
+
            //probably don't need 
            searchObj = {
                category: searchCategory,
@@ -65,16 +51,17 @@ $('#modal-search-event').on("click", function () {
                endDate: searchEndDate,
                address: searchAddress
            }
+
             //clear the Event Search fields
             let select = $('select');
             $("form input").val("");
             select.prop('selectedIndex', 0);
             select.material_select();
-            $('#start-date-search').val("");
-            $('#end-date-search').val("");
-            $('#street-search').val("");
-            $('#city-search').val("");
-            $('#state-search').val("");
+            $('#search-start-date').val("");
+            $('#search-end-date').val("");
+            $('#search-street').val("");
+            $('#search-city').val("");
+            $('#search-state').val("");
         }
     console.log("search category: " + searchCategory);
     console.log("start date: " + searchStartDate);
@@ -94,38 +81,63 @@ $('#create-event').on("click", function () {
 });
 
 $('#modal-create-event').on("click", function () {
-    let searchCategory;
-    let searchStartDate;
-    let searchEndDate;
-    let searchAddress;
+    let createName;
+    let createDate;
+    let createDescrip;
+    let createImage;
+    let createAddress;
+    let createCategory;
+    let createObj;
 
-    if ($('#search-category').val() == "" || 
-        $('#start-date-search').val() == "" ||
-        $('#end-date-search').val() == "" ||
-        $('#street-search').val() == "" ||
-        $('#city-search').val() == "" ||
-        $('#state-search').val() == "" ) {
+    //if no image link submitted, set eventImage to the event image placceholder
+    if ($('#create-image').val() == "") {
+        createImage = "assets/event-placeholder.png"
+    } else {
+        createImage = $('#create-image').val().trim();
+    }
+
+    if ($('#create-name').val() == ""||
+        $('#create-date').val() == ""||
+        $('#create-descrip').val() == ""||
+        $('#create-street').val() == ""||
+        $('#create-city').val() == ""||
+        $('#create-state').val() == ""||
+        $('#create-category').val() == ""
+        ) {
             alert("PLACEHOLDER - Will pop a modal asking user to fill in info");
         } else {
-           searchCategory = $('#search-category').val();
-           searchStartDate = $('#start-date-search').val().trim();
-           searchEndDate = $('#end-date-search').val().trim();
-           searchAddress = $('#street-search').val().trim() + "," + $('#city-search').val().trim() + "," + $('#state-search').val();
+            createName = $('#create-name').val().trim();
+            createDate = $('#create-date').val();
+            createDescrip = $('#create-descrip').val().trim();
+            createAddress = $('#create-street').val().trim() + ", " + $('#create-city').val().trim() + ", " + $('#create-state').val();
+            createCategory = $('#create-category').val();
+
+            //object for the DB
+            createObj = {
+                name: createName,
+                description: createDescrip,
+                address: createAddress,
+                date: createDate,
+                image: createImage,
+                category: createCategory,
+            }
+            
+            //clear the Event Search fields
+            $('#create-name').val("");
+            $('#create-date').val("");
+            $('#create-descrip').val("");
+            $('#create-street').val("");
+            $('#create-city').val("");
+            $('#create-state').val("");
+            let select = $('select');
+            $("form input").val("");
+            select.prop('selectedIndex', 0);
+            select.material_select();
         }
-    console.log("search category: " + searchCategory);
-    console.log("start date: " + searchStartDate);
-    console.log("end date: " + searchEndDate);
-    console.log("address: " + searchAddress);
 
-    //clear the Event Search fields
-    var select = $('select');
-    $("form input").val("");
-    select.prop('selectedIndex', 0);
-    select.material_select();
-    $('#start-date-search').val("");
-    $('#end-date-search').val("");
-    $('#street-search').val("");
-    $('#city-search').val("");
-    $('#state-search').val("");
-
+    console.log("createName: " + createName);
+    console.log("createDate: " + createDate);
+    console.log("createDescrip: " + createDescrip);
+    console.log("createCategory: " + createCategory);
+    console.log("createImage: " + createImage)
 });
