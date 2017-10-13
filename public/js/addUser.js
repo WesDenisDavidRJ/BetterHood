@@ -1,3 +1,5 @@
+//Wes update
+
 // The code in add.js handles what happens when the user clicks the "Add a book" button.
 
 // When user clicks add-btn
@@ -14,7 +16,7 @@ $("#ID to add user Denis").on("submit", function(event) {
 
 
   // Send an AJAX POST-request with jQuery
-  $.post("/api/books", newUser)
+  $.post("/api/users", newUser)
     // On success, run the following code
     .done(function(data) {
       // Log the data we found
