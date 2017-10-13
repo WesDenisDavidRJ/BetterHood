@@ -110,7 +110,7 @@ app.get("/api/register", function(req, res) {
   app.post("/api/events", function(req, res) {
     console.log(req.body);
     console.log("New Event:");
-    db.Event.create({
+    Event.create({
       description: req.body.description,
       address: req.body.address,
       date: req.body.date,
@@ -126,7 +126,7 @@ app.get("/api/register", function(req, res) {
   app.post("/api/users", function(req, res) {
     console.log("New User:");
     console.log(req.body);
-    db.User.create({
+    User.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
