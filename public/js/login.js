@@ -14,7 +14,7 @@ var loginEmail;
 var userLogin;
 
 $('#create-account').on("click", function () {
-    console.log("hello from Signup!!!!")     
+    console.log("hello from Signup!!!!")
 })
 
 $('#login-account').on("click", function () {
@@ -22,13 +22,14 @@ $('#login-account').on("click", function () {
 })
 
 $('#modal-create-account').on("click", function () {
-    if ($('#user-first-name').val() == "" ||
+    if ($("#user-password").val().trim() != $("#confirm-password").val().trim()) {
+        alert("Passwords do not match.");
+    } else if ($('#user-first-name').val() == "" ||
         $('#user-last-name').val() == "" ||
         $('#user-email').val() == "" ||
         $('#user-password').val() == "" ||
         $('#confirm-password').val() == "") {
-    } if ($("user-password").val() != $("#confirm-password").val()) {
-        alert("Passwords do not match.");
+        alert("Please fill in missing info");
     } else {
         firstName = $('#user-first-name').val();
         lastName = $('#user-last-name').val();
@@ -37,15 +38,16 @@ $('#modal-create-account').on("click", function () {
         confirmPassword = $('#confirm-password').val();
         userDescrip = $('#user-descrip').val();
         $('#modal1').modal('close');
+        // clear the Event Search fields
+        $('#user-first-name').val("");
+        $('#user-last-name').val("");
+        $('#user-email').val("");
+        $('#user-password').val("");
+        $('#confirm-password').val("");
+        $('#user-descrip').val("");
     }
 
-    //clear the Event Search fields
-    // $('#user-first-name').val("");
-    // $('#user-last-name').val("");
-    // $('#user-email').val("");
-    // $('#user-password').val("");
-    // $('#confirm-password').val("");
-    // $('#user-descrip').val("");
+
 
     console.log("Close login modal!!");
     console.log(firstName);
@@ -54,7 +56,7 @@ $('#modal-create-account').on("click", function () {
     console.log(userPassword);
     console.log(confirmPassword);
     console.log(userDescrip);
-    
+
 })
 
 $('#modal-login-account').on("click", function () {

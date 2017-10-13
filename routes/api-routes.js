@@ -3,8 +3,8 @@ var db = require("../models");
 var passport = require("../config/passport")
 var accountSid = 'AC7e4e81cff80cf1d86872f2066ec1c675'; // Your Account SID from www.twilio.com/console
 var authToken = '572ee0ec91e3ff8e029b57e7b0a3ab71';   // Your Auth Token from www.twilio.com/console
-
 var twilio = require('twilio');
+
 module.exports = function(app) {
 
     app.get("/api/users/", function(req, res) {
@@ -21,14 +21,14 @@ module.exports = function(app) {
         });
       });
 
-    // Using the passport.authenticate middleware with our local strategy.
+  // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
-  app.post("/api/login", passport.authenticate("local"), function(req, res) {
+  app.post("/api/loginPage", passport.authenticate("local"), function(req, res) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
-    res.json("/members");
+    res.json("/index");
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -77,60 +77,69 @@ app.get("/api/register", function(req, res) {
     res.json(tableData);
   });
 
-// GET /auth/google
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request.  The first step in Google authentication will involve
-//   redirecting the user to google.com.  After authorization, Google
-//   will redirect the user back to this application at /auth/google/callback
-app.get('/auth/google',
-passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
 
-// GET /auth/google/callback
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request.  If authentication fails, the user will be redirected back to the
-//   login page.  Otherwise, the primary route function function will be called,
-//   which, in this example, will redirect the user to the home page.
-app.get('/auth/google/callback', 
-passport.authenticate('google', { failureRedirect: '/login' }),
-function(req, res) {
-  res.redirect('/');
-});
+// // Davids
+//   app.post("/api/users", function(req, res) {
+//     console.log(req.body);
+//     db.User.create({
+//       firstName: req.body.firstName,
+//       lastName: req.body.lastName,
+//       email: req.body.email,
+//       phone: req.body.phone,
+//     })
+//     .then(function(dbUser) {
+//       res.json(dbUser);
+//     });
+//   });
+// // Davids
+//   app.post("/api/events", function(req, res) {
+//     console.log(req.body);
+//     db.Event.create({
+//       description: req.body.description,
+//       address: req.body.address,
+//       date: req.body.date,
+//       image: req.body.image,
+//       category: req.body.category,
+//     })
+//     .then(function(dbUser) {
+//       res.json(dbUser);
+//     });
+//   });
 
+// Add a user Wes update 
+  app.post("/api/events", function(req, res) {
+    console.log(req.body);
+    console.log("New Event:");
+    db.Event.create({
+      description: req.body.description,
+      address: req.body.address,
+      date: req.body.date,
+      image: req.body.image,
+      category: req.body.category,
+    })
+    .then(function(results) {
+      res.json(results);
+    });
+  });
+
+   // Add a user Wes update 
   app.post("/api/users", function(req, res) {
+    console.log("New User:");
     console.log(req.body);
     db.User.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
       phone: req.body.phone,
-    })
-    .then(function(dbUser) {
-      res.json(dbUser);
+    }).then(function(results) {
+      res.json(results);
     });
   });
 
-  app.post("/api/events", function(req, res) {
-    console.log(req.body);
-    db.Event.create({
-      Description: req.body.Description,
-      Address: req.body.Address,
-      Date: req.body.Date,
-      Image: req.body.Image,
-      Category: req.body.Category,
-    })
-    .then(function(dbUser) {
-      res.json(dbUser);
-    });
-  });
-
-
-
-
-
-app.post("/api/register", function(req, res) {
+app.post("/api/events", function(req, res) {
     console.log(req.body);
     client.messages.create({
-     body: 'Hello from David',
+     body: `Hello from BetterHood.org.  The event you signed up for is ${req.body}`,
      to: '+1'+req.body.phoneNumber,  // Text this number
      from: '+19197525090' // From a valid Twilio number
     }, function(err, message){
@@ -141,5 +150,5 @@ app.post("/api/register", function(req, res) {
         }
         
         });
-    })
-}
+    });
+};
