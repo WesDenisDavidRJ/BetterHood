@@ -78,22 +78,38 @@ app.get("/api/register", function(req, res) {
   });
 
 
+// // Davids
+//   app.post("/api/users", function(req, res) {
+//     console.log(req.body);
+//     db.User.create({
+//       firstName: req.body.firstName,
+//       lastName: req.body.lastName,
+//       email: req.body.email,
+//       phone: req.body.phone,
+//     })
+//     .then(function(dbUser) {
+//       res.json(dbUser);
+//     });
+//   });
+// // Davids
+//   app.post("/api/events", function(req, res) {
+//     console.log(req.body);
+//     db.Event.create({
+//       description: req.body.description,
+//       address: req.body.address,
+//       date: req.body.date,
+//       image: req.body.image,
+//       category: req.body.category,
+//     })
+//     .then(function(dbUser) {
+//       res.json(dbUser);
+//     });
+//   });
 
-  app.post("/api/users", function(req, res) {
-    console.log(req.body);
-    db.User.create({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      phone: req.body.phone,
-    })
-    .then(function(dbUser) {
-      res.json(dbUser);
-    });
-  });
-
+// Add a user Wes update 
   app.post("/api/events", function(req, res) {
     console.log(req.body);
+    console.log("New Event:");
     db.Event.create({
       description: req.body.description,
       address: req.body.address,
@@ -101,14 +117,24 @@ app.get("/api/register", function(req, res) {
       image: req.body.image,
       category: req.body.category,
     })
-    .then(function(dbUser) {
-      res.json(dbUser);
+    .then(function(results) {
+      res.json(results);
     });
   });
 
-
-
-
+   // Add a user Wes update 
+  app.post("/api/users", function(req, res) {
+    console.log("New User:");
+    console.log(req.body);
+    db.User.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      phone: req.body.phone,
+    }).then(function(results) {
+      res.json(results);
+    });
+  });
 
 app.post("/api/events", function(req, res) {
     console.log(req.body);
