@@ -13,13 +13,13 @@ var userDescrip;
 var loginEmail;
 var userLogin;
 
-$('#create-account').on("click", function () {
-    console.log("hello from Signup!!!!")
-})
+// $('#create-account').on("click", function () {
+//     console.log("hello from Signup!!!!")
+// })
 
-$('#login-account').on("click", function () {
-    console.log("hello from login!!!!")
-})
+// $('#login-account').on("click", function () {
+//     console.log("hello from login!!!!")
+// })
 
 $('#modal-create-account').on("click", function () {
     if ($("#user-password").val().trim() != $("#confirm-password").val().trim()) {
@@ -49,13 +49,13 @@ $('#modal-create-account').on("click", function () {
 
 
 
-    console.log("Close login modal!!");
-    console.log(firstName);
-    console.log(lastName);
-    console.log(userEmail);
-    console.log(userPassword);
-    console.log(confirmPassword);
-    console.log(userDescrip);
+    // console.log("Close login modal!!");
+    // console.log(firstName);
+    // console.log(lastName);
+    // console.log(userEmail);
+    // console.log(userPassword);
+    // console.log(confirmPassword);
+    // console.log(userDescrip);
 
 })
 
