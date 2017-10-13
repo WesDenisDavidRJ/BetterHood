@@ -36,15 +36,16 @@ $('#modal-create-account').on("click", function () {
         userPassword = $('#user-password').val();
         confirmPassword = $('#confirm-password').val();
         userDescrip = $('#user-descrip').val();
+        $('#modal1').modal('close');
     }
 
     //clear the Event Search fields
-    $('#user-first-name').val("");
-    $('#user-last-name').val("");
-    $('#user-email').val("");
-    $('#user-password').val("");
-    $('#confirm-password').val("");
-    $('#user-descrip').val("");
+    // $('#user-first-name').val("");
+    // $('#user-last-name').val("");
+    // $('#user-email').val("");
+    // $('#user-password').val("");
+    // $('#confirm-password').val("");
+    // $('#user-descrip').val("");
 
     console.log("Close login modal!!");
     console.log(firstName);
@@ -53,7 +54,7 @@ $('#modal-create-account').on("click", function () {
     console.log(userPassword);
     console.log(confirmPassword);
     console.log(userDescrip);
-    $('#modal1').modal('close');
+    
 })
 
 $('#modal-login-account').on("click", function () {
