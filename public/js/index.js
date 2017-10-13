@@ -41,8 +41,8 @@ $('#modal-search-event').on("click", function () {
         } else {
            searchCategory = $('#search-category').val();
            searchStartDate = $('#search-start-date').val();
-           searchEndDate = $('#search-end-date').val().trim();
-           searchAddress = $('#search-street').val().trim() + ", " + $('#search-city').val().trim() + ", " + $('#search-state').val();
+           searchEndDate = $('#search-end-date').val();
+           searchAddress = $('#search-street').val() + ", " + $('#search-city').val() + ", " + $('#search-state').val();
 
            //probably don't need 
            searchObj = {
@@ -93,7 +93,7 @@ $('#modal-create-event').on("click", function () {
     if ($('#create-image').val() == "") {
         createImage = "assets/event-placeholder.png"
     } else {
-        createImage = $('#create-image').val().trim();
+        createImage = $('#create-image').val();
     }
 
     if ($('#create-name').val() == ""||
@@ -106,10 +106,10 @@ $('#modal-create-event').on("click", function () {
         ) {
             alert("PLACEHOLDER - Will pop a modal asking user to fill in info");
         } else {
-            createName = $('#create-name').val().trim();
+            createName = $('#create-name').val();
             createDate = $('#create-date').val();
-            createDescrip = $('#create-descrip').val().trim();
-            createAddress = $('#create-street').val().trim() + ", " + $('#create-city').val().trim() + ", " + $('#create-state').val();
+            createDescrip = $('#create-descrip').val();
+            createAddress = $('#create-street').val() + ", " + $('#create-city').val() + ", " + $('#create-state').val();
             createCategory = $('#create-category').val();
 
             //object for the DB
@@ -134,6 +134,14 @@ $('#modal-create-event').on("click", function () {
             select.prop('selectedIndex', 0);
             select.material_select();
         }
+
+          // Send an AJAX POST-request with jQuery
+  $.post("/api/events", createObj)
+    // On success, run the following code
+    .done(function(data) {
+      // Log the data we found
+      console.log(data);
+    });
 
     console.log("createName: " + createName);
     console.log("createDate: " + createDate);
