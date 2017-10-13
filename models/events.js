@@ -1,4 +1,10 @@
-module.exports = function(sequelize, Sequelize) {
+//
+// module.exports = function(sequelize, Sequelize) {
+// =======
+var Sequelize = require("sequelize");
+
+module.exports = function(sequelize, DataTypes) {
+// >>>>>>> master
     var Event = sequelize.define("Event", {
       name: {
         type: Sequelize.STRING,
