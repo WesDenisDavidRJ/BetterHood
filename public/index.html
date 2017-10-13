@@ -29,7 +29,7 @@
     <nav>
         <div class="nav-wrapper light-blue accent-3">
             <a href="#" class="brand-logo center">
-                <img class="responsive-img" src="assets/logo.png" alt="Logo">
+                <img class="responsive-img" src="assets/logo-large.png" alt="Logo">
             </a>
         </div>
     </nav>
@@ -77,19 +77,19 @@
     <div id="search-modal" class="modal">
         <div class="modal-content">
             <h4>Event Search</h4>
-            <br>
+        
             <!-- Start Dropdown -->
             <!-- <p class="date-title">Event Type</p> -->
             <div class="input-field col l12">
-                <select multiple>
+                <select multiple id="search-category">
                     <option value="" disabled selected>Choose the types of events you're interested in:</option>
-                    <option value="1">General Assistance</option>
-                    <option value="2">Educational</option>
-                    <option value="3">Political</option>
-                    <option value="4">Environmental</option>
-                    <option value="5">Arts & Culture</option>
+                    <option value="General Assistance">General Assistance</option>
+                    <option value="Educational">Educational</option>
+                    <option value="Political">Political</option>
+                    <option value="Environmental">Environmental</option>
+                    <option value="Arts and Culture">Arts and Culture</option>
                 </select>
-                <label>Event Type</label>
+                <!-- <label>Event Type</label> -->
             </div>
             <!-- End Dropdown -->
 
@@ -97,23 +97,33 @@
             <div class="row">
                 <div class="start-date-div col l6">
                     <!-- <p class="date-title">Start Date</p> -->
-                    <label for="start-date">Start Date</label>
-                    <input type="text" class="datepicker" value="" id="start-date">
+                    <label for="search-start-date">Start Date</label>
+                    <input type="text" class="datepicker" value="" id="search-start-date">
                 </div>
                 <div class="end-date-div col l6">
                     <!-- <p class="date-title">End Date</p> -->
-                    <label for="end-date">End Date</label>
-                    <input type="text" class="datepicker" value="" id="end-date">
+                    <label for="search-end-date">End Date</label>
+                    <input type="text" class="datepicker" value="" id="search-end-date">
                 </div>
             </div>
             <!-- End Datepicker -->
 
-            <!-- Start Email -->
+            <!-- Start Address Row -->
             <div class="row">
-                <!-- <p class="date-title">Your Zipcode</p> -->
+                <!-- <p class="user-location">Your location:</p> -->
                 <div class="input-field col l6">
-                    <input id="zipcode" type="text" class="validate" data-length="5">
-                    <label for="zipcode">Zipcode</label>
+                    <input id="search-street" type="text" class="validate">
+                    <label for="search-street">Your Street Address</label>
+                </div>
+
+                <div class="input-field col l4">
+                    <input id="search-city" type="text" class="validate">
+                    <label for="search-city">City"</label>
+                </div>
+
+                <div class="input-field col l2">
+                    <input id="search-state" type="text" class="validate" data-length="2">
+                    <label for="search-state">State (e.g. NC)</label>
                 </div>
             </div>
             <button class="waves-effect waves-light btn light-blue accent-3 hoverable" type="submit" name="get-started" id="modal-search-event">
@@ -129,58 +139,66 @@
             <div class="row">
                 <!-- Event Name Field -->
                 <div class="input-field col l6">
-                    <input id="event-name" type="text" class="validate" data-length="40">
-                    <label for="event-name">Event Name</label>
+                    <input id="create-name" type="text" class="validate" data-length="40">
+                    <label for="create-name">Event Name</label>
                 </div>
                 <!-- Start Datepicker -->
                 <div class="start-date-div col l6">
                     <!-- <p class="date-title">Start Date</p> -->
-                    <label for="start-date">Event Date:</label>
-                    <input type="text" class="datepicker" value="" id="start-date">
+                    <label for="create-date">Event Date:</label>
+                    <input type="text" class="datepicker" value="" id="create-date">
                 </div>
             </div>
             <!-- End Datepicker -->
             <!-- Event Desctiption Field -->
             <div class="input-field col l12">
-                <input id="event-descrip" type="text" class="validate" data-length="200">
-                <label for="event-descrip">Event Description</label>
+                <input id="create-descrip" type="text" class="validate" data-length="200">
+                <label for="create-descrip">Event Description</label>
 
             </div>
             <div class="input-field col l12">
                 <!-- removed class="validate" form link input field -->
-                <input id="event-descrip" type="text">
-                <label for="event-descrip">Link to Event Image</label>
+                <input id="create-image" type="text">
+                <label for="create-image">Link to Event Image</label>
 
             </div>
 
             <div class="row">
-                <div class="input-field col l6">
-                    <input id="event-address" type="text" class="validate" data-length="100">
-                    <label for="event-address">Street Address</label>
-                </div>
+                <div class="row">
+                    <div class="input-field col l6">
+                        <input id="create-street" type="text" class="validate">
+                        <label for="create-street">Event Street Address</label>
+                    </div>
 
-                <!-- Start Zipcode -->
-                <div class="input-field col l6">
-                    <input id="zipcode" type="text" class="validate" data-length="5">
-                    <label for="zipcode">Zipcode</label>
+                    <div class="input-field col l4">
+                        <input id="create-city" type="text" class="validate">
+                        <label for="create-city">City"</label>
+                    </div>
+
+                    <div class="input-field col l2">
+                        <input id="create-state" type="text" class="validate" data-length="2">
+                        <label for="create-state">State (e.g. NC)</label>
+                    </div>
                 </div>
             </div>
             <!-- Start Dropdown -->
             <div class="input-field col l6">
-                <select>
+                <select id="create-category">
                     <option value="" disabled selected>Select a category for your event:</option>
-                    <option value="1">General Assistance</option>
-                    <option value="2">Educational</option>
-                    <option value="3">Political</option>
-                    <option value="4">Environmental</option>
-                    <option value="5">Arts & Culture</option>
+                    <!-- change value to full String instead of number values  -->
+                    <option value="General Assistance">General Assistance</option>
+                    <option value="Educational">Educational</option>
+                    <option value="Political">Political</option>
+                    <option value="Environmental">Environmental</option>
+                    <option value="Arts and Culture">Arts and Culture</option>
                 </select>
                 <!-- <label>Event Type</label> -->
             </div>
             <!-- End Dropdown -->
-
             <button class="waves-effect waves-light btn green accent-4 hoverable" type="submit" name="get-started" id="modal-create-event">
-               <a href="api/events" ><i class="material-icons left">add_circle_outline</i>Create Event</button></a>
+            <!-- <a href="api/events" > -->
+                <i class="material-icons left">add_circle_outline</i>Create Event</button>
+            <!-- </a> -->
         </div>
     </div>
     <!-- End Create Modal -->
