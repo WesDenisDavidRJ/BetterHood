@@ -1,51 +1,51 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function(sequelize, Sequelize) {
     var Event = sequelize.define("Event", {
       name: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         validate: {
           len: [1]
         }
       },
       descrip: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         validate: {
           len: [1]
         }
       },
       address: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         len: [1]
       },
       lat: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         len: [1]
       },
       lon: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         len: [1]
       },
       date: {
-        type: DataTypes.DATE,
+        type: Sequelize.DATE,
         allowNull: false,
         len: [1]
       },
       image: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         len: [1]
       },
       zipcode: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         len: [1]
       },
       category: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         defaultValue: "General Assistance"
       }
     });

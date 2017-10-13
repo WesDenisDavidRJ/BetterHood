@@ -108,9 +108,10 @@ app.get("/api/register", function(req, res) {
 
 // Add a user Wes update 
   app.post("/api/events", function(req, res) {
-    console.log(req.body);
     console.log("New Event:");
+    console.log(req.body);
     Event.create({
+      name: req.body.name,
       description: req.body.description,
       address: req.body.address,
       date: req.body.date,
