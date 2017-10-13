@@ -78,7 +78,7 @@ app.get("/api/register", function(req, res) {
   });
 
 
-// //Davids post
+// // Davids
 //   app.post("/api/users", function(req, res) {
 //     console.log(req.body);
 //     db.User.create({
@@ -91,9 +91,25 @@ app.get("/api/register", function(req, res) {
 //       res.json(dbUser);
 //     });
 //   });
+// // Davids
+//   app.post("/api/events", function(req, res) {
+//     console.log(req.body);
+//     db.Event.create({
+//       description: req.body.description,
+//       address: req.body.address,
+//       date: req.body.date,
+//       image: req.body.image,
+//       category: req.body.category,
+//     })
+//     .then(function(dbUser) {
+//       res.json(dbUser);
+//     });
+//   });
 
+// Add a user Wes update 
   app.post("/api/events", function(req, res) {
     console.log(req.body);
+    console.log("New Event:");
     db.Event.create({
       description: req.body.description,
       address: req.body.address,
@@ -101,8 +117,8 @@ app.get("/api/register", function(req, res) {
       image: req.body.image,
       category: req.body.category,
     })
-    .then(function(dbUser) {
-      res.json(dbUser);
+    .then(function(results) {
+      res.json(results);
     });
   });
 
