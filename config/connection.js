@@ -6,6 +6,7 @@
 var Sequelize = require("sequelize");
 
 // Creates mySQL connection using Sequelize
+
 var sequelize = new Sequelize("BetterHood", "root", "P1rates1", {
   host: "localhost",
   dialect: "mysql",
@@ -18,3 +19,7 @@ var sequelize = new Sequelize("BetterHood", "root", "P1rates1", {
 
 // Exports the connection for other files to use
 module.exports = sequelize;
+
+// new Sequelize("BetterHood", "root", "root"
+// min: 0,
+//idle: 10000
