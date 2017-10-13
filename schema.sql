@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS betterhood;
+DROP DATABASE IF EXISTS "betterhood";
 
-CREATE DATABASE betterhood;
+CREATE DATABASE "betterhood";

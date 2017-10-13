@@ -1,11 +1,18 @@
-//
-// module.exports = function(sequelize, Sequelize) {
-// =======
-var Sequelize = require("sequelize");
+var bcrypt = require("bcrypt-nodejs");
+// Dependencies
+// =============================================================
 
-module.exports = function(sequelize, DataTypes) {
-// >>>>>>> master
-    var Event = sequelize.define("Event", {
+// Sequelize (capital) references the standard library
+var Sequelize = require("sequelize");
+// sequelize (lowercase) references my connection to the DB.
+var sequelize = require("../config/connection.js");
+
+// Creates a "Event" model that matches up with DB
+
+//Wes Update
+
+
+    var EventModel = sequelize.define("event", {
       name: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -13,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
           len: [1]
         }
       },
-      descrip: {
+      description: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
@@ -22,30 +29,25 @@ module.exports = function(sequelize, DataTypes) {
       },
       address: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         len: [1]
       },
       lat: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         len: [1]
       },
       lon: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         len: [1]
       },
       date: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        len: [1]
-      },
-      image: {
         type: Sequelize.STRING,
         allowNull: false,
         len: [1]
       },
-      zipcode: {
+      image: {
         type: Sequelize.STRING,
         allowNull: false,
         len: [1]
@@ -55,5 +57,10 @@ module.exports = function(sequelize, DataTypes) {
         defaultValue: "General Assistance"
       }
     });
-    return Event;
-  };
+
+//Differnt color ??
+  // Syncs with DB
+EventModel.sync();
+
+// Makes the EventModel Model available for other files (will also create a table)
+module.exports = EventModel;

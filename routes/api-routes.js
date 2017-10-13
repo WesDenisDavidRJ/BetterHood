@@ -1,4 +1,4 @@
-
+var EventModel = require("../models/newEvents.js");
 var db = require("../models");
 var passport = require("../config/passport")
 var accountSid = 'AC7e4e81cff80cf1d86872f2066ec1c675'; // Your Account SID from www.twilio.com/console
@@ -78,37 +78,64 @@ app.get("/api/register", function(req, res) {
   });
 
 
+// // Davids
+//   app.post("/api/users", function(req, res) {
+//     console.log(req.body);
+//     db.User.create({
+//       firstName: req.body.firstName,
+//       lastName: req.body.lastName,
+//       email: req.body.email,
+//       phone: req.body.phone,
+//     })
+//     .then(function(dbUser) {
+//       res.json(dbUser);
+//     });
+//   });
+// // Davids
+//   app.post("/api/events", function(req, res) {
+//     console.log(req.body);
+//     db.Event.create({
+//       description: req.body.description,
+//       address: req.body.address,
+//       date: req.body.date,
+//       image: req.body.image,
+//       category: req.body.category,
+//     })
+//     .then(function(dbUser) {
+//       res.json(dbUser);
+//     });
+//   });
 
-  app.post("/api/users", function(req, res) {
-    console.log(req.body);
-    db.User.create({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      phone: req.body.phone,
-    })
-    .then(function(dbUser) {
-      res.json(dbUser);
-    });
-  });
-
+// Add a user Wes update 
   app.post("/api/events", function(req, res) {
+    console.log("New Event:");
     console.log(req.body);
-    db.Event.create({
+    EventModel.create({
+      name: req.body.name,
       description: req.body.description,
       address: req.body.address,
       date: req.body.date,
       image: req.body.image,
       category: req.body.category,
     })
-    .then(function(dbUser) {
-      res.json(dbUser);
+    .then(function(results) {
+      res.json(results);
     });
   });
 
-
-
-
+   // Add a user Wes update 
+  app.post("/api/users", function(req, res) {
+    console.log("New User:");
+    console.log(req.body);
+    User.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      phone: req.body.phone,
+    }).then(function(results) {
+      res.json(results);
+    });
+  });
 
 app.post("/api/events", function(req, res) {
     console.log(req.body);
