@@ -63,6 +63,8 @@ $('#modal-search-event').on("click", function () {
             $('#search-city').val("");
             $('#search-state').val("");
         }
+    //close the modal
+    // $('#create-modal').modal('open');
     console.log("search category: " + searchCategory);
     console.log("start date: " + searchStartDate);
     console.log("end date: " + searchEndDate);
@@ -133,8 +135,12 @@ $('#modal-create-event').on("click", function () {
             $("form input").val("");
             select.prop('selectedIndex', 0);
             select.material_select();
+
         }
 
+    //close the modal
+    // $('#create-modal').modal('open');
+    
     console.log("createName: " + createName);
     console.log("createDate: " + createDate);
     console.log("createDescrip: " + createDescrip);
