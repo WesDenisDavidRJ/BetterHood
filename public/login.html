@@ -20,6 +20,17 @@
     <script src="js/materialize.js"></script>
     <!--  -->
     <link type="text/css" rel="stylesheet" href="css/style.css" />
+
+      <!-- Script to handle Google Auth Info -->
+  <script src="/login.js"></script>
+  
+    <!-- Google Sign-in Meta and Script -->
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="424783041948-m784eijrjp3gegsdu204mp2s1jr4dtku.apps.googleusercontent.com">
+    <!-- Note the "onload" parameter. That function is defined in reservations.js so we need to load
+      reservations.js before this platform.js file loads. -->
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
@@ -69,10 +80,13 @@
                 <!-- <a id="signUp" class="waves-effect waves-light btn-large light-blue accent-3">
                     <i class="material-icons left">people</i>Sign Up</a> -->
             </div>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
             <div class="col m3 s6 center-align">
                 <a id="login" class="waves-effect waves-light btn-large green accent-4 modal-trigger" href="#modal1" href='/loginPage'>
+                    
                     <i class="material-icons left">transfer_within_a_station</i>Login</a>
+                    
             </div>
 
             <div class="col m3 hide-on-small-only center-align">
