@@ -1,3 +1,5 @@
+var bcrypt = require("bcrypt-nodejs");
+
 // Dependencies 
 // =============================================================
 
