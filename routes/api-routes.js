@@ -93,6 +93,8 @@ app.get("/api/register", function(req, res) {
       name: req.body.name,
       description: req.body.description,
       address: req.body.address,
+      lat: req.body.lat,
+      lon: req.body.lon,
       date: req.body.date,
       image: req.body.image,
       category: req.body.category,

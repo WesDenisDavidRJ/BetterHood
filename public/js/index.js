@@ -1,3 +1,7 @@
+let createLat;
+let createLong;
+
+
 // load materialize component js
 $(document).ready(function () {
     $('.scrollspy').scrollSpy();
@@ -96,6 +100,8 @@ $('#create-event').on("click", function () {
     $('#create-modal').modal('open');
 });
 
+let googleLocationCreate;
+
 $('#modal-create-event').on("click", function () {
     let createName;
     let createDate;
@@ -104,6 +110,8 @@ $('#modal-create-event').on("click", function () {
     let createAddress;
     let createCategory;
     let createObj;
+
+
 
     //if no image link submitted, set eventImage to the event image placceholder
     if ($('#create-image').val() == "") {
@@ -121,21 +129,28 @@ $('#modal-create-event').on("click", function () {
         $('#create-category').val() == ""
         ) {
             alert("PLACEHOLDER - Will pop a modal asking user to fill in info");
-        } else {
-            createName = $('#create-name').val();
-            createDate = $('#create-date').val();
-            createDescrip = $('#create-descrip').val();
-            createAddress = $('#create-street').val() + ", " + $('#create-city').val() + ", " + $('#create-state').val();
-            createCategory = $('#create-category').val();
+    } else {
+        createName = $('#create-name').val();
+        createDate = $('#create-date').val();
+        createDescrip = $('#create-descrip').val();
+        createAddress = $('#create-street').val() + ", " + $('#create-city').val() + ", " + $('#create-state').val();
+        createCategory = $('#create-category').val();
+        googleLocationCreate = createAddress;
+    
+    
+        geocodeCreate().then(function(){
 
             //object for the DB
             createObj = {
                 name: createName,
                 description: createDescrip,
                 address: createAddress,
+                lat: createLat,
+                lon: createLong,
                 date: createDate,
                 image: createImage,
-                category: createCategory,
+                category: createCategory
+
             }
             
             //clear the Event Search fields
@@ -149,22 +164,25 @@ $('#modal-create-event').on("click", function () {
             $("form input").val("");
             select.prop('selectedIndex', 0);
             select.material_select();
-        }
 
-          // Send an AJAX POST-request with jQuery
-  $.post("/api/events", createObj)
-    // On success, run the following code
-    .done(function(data) {
-      // Log the data we found
-      console.log(data);
-    });
+            // Send an AJAX POST-request with jQuery
+            $.post("/api/events", createObj)
+                // On success, run the following code
+                .done(function(data) {
+                    // Log the data we found
+                    console.log(data);
+                });
 
-    console.log("createName: " + createName);
-    console.log("createDate: " + createDate);
-    console.log("createDescrip: " + createDescrip);
-    console.log("createCategory: " + createCategory);
-    console.log("createImage: " + createImage)
-});
+            console.log("createName: " + createName);
+            console.log("createDate: " + createDate);
+            console.log("createDescrip: " + createDescrip);
+            console.log("createCategory: " + createCategory);
+            console.log("createImage: " + createImage)
+        });
+    }
+})
+
+
 
 //This function will be called in the search click
 
@@ -200,6 +218,34 @@ function geocode() {
             // Log full response
             console.log(response);
 
+            
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+function geocodeCreate() {
+    // Prevent actual submi
+
+    // var location = document.getElementById('location-input').value;
+
+    return axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+            params: {
+                address: googleLocationCreate,
+                key: 'AIzaSyBW6TPdNKLWbxq92udGv6W46xMBtQ2BgSg'
+            }
+        })
+        .then(function (response) {
+            // Log full response
+            console.log(response);
+
+            let createLatFloat = response.data.results[0].geometry.location.lat;
+            let createLongFloat = response.data.results[0].geometry.location.lng;
+            createLat = createLatFloat.toString();
+            createLong = createLongFloat.toString();
+            console.log(createLat);
+            console.log(createLong);
             
         })
         .catch(function (error) {
