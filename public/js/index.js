@@ -1,5 +1,6 @@
 // load materialize component js
 $(document).ready(function () {
+    $('.scrollspy').scrollSpy();
     $('select').material_select();
     $('.modal').modal();
     $('.tooltipped').tooltip({delay: 50});
@@ -12,6 +13,7 @@ $(document).ready(function () {
         closeOnSelect: false, // Close upon selecting a date,
         format: 'mm/dd/yyyy'
       });
+     
 });
 
 //////////////////////////////////////////////////
@@ -45,12 +47,12 @@ $('#modal-search-event').on("click", function () {
            searchAddress = $('#search-street').val() + ", " + $('#search-city').val() + ", " + $('#search-state').val();
 
            //probably don't need 
-           searchObj = {
-               category: searchCategory,
-               startDate: searchStartDate,
-               endDate: searchEndDate,
-               address: searchAddress
-           }
+        //    searchObj = {
+        //        category: searchCategory,
+        //        startDate: searchStartDate,
+        //        endDate: searchEndDate,
+        //        address: searchAddress
+        //    }
 
             //clear the Event Search fields
             let select = $('select');
@@ -63,6 +65,23 @@ $('#modal-search-event').on("click", function () {
             $('#search-city').val("");
             $('#search-state').val("");
         }
+
+
+        $.get("/api/events/", function(data) {
+            // db.Event.findAll({})
+
+            console.log(data);
+            
+            // .done(function(data) {
+            //     // Log the data we found
+            //     console.log(data);
+            //   });
+
+          })           
+           .done(function(data) {
+                // Log the data we found
+                console.log(data);
+              });
     console.log("search category: " + searchCategory);
     console.log("start date: " + searchStartDate);
     console.log("end date: " + searchEndDate);
