@@ -35,3 +35,14 @@ div.parallax-container {
 #create-account {
     width: 250px;
 }
+
+.abcRioButton, .abcRioButtonLightBlue{
+    height: 54px;
+    width: 120px;
+    padding: 1rem;
+}
+.abcRioButton:hov, .abcRioButtonLightBlue:hove{
+    height: 54px;
+    width: 120px;
+    padding: 1rem;
+}
