@@ -54,6 +54,8 @@ $('#modal-search-event').on("click", function () {
         //        address: searchAddress
         //    }
 
+        searchEventByCategory();
+
             //clear the Event Search fields
             let select = $('select');
             $("form input").val("");
@@ -67,21 +69,6 @@ $('#modal-search-event').on("click", function () {
         }
 
 
-        $.get("/api/events/", function(data) {
-            // db.Event.findAll({})
-
-            console.log(data);
-            
-            // .done(function(data) {
-            //     // Log the data we found
-            //     console.log(data);
-            //   });
-
-          })           
-           .done(function(data) {
-                // Log the data we found
-                console.log(data);
-              });
     console.log("search category: " + searchCategory);
     console.log("start date: " + searchStartDate);
     console.log("end date: " + searchEndDate);
@@ -168,3 +155,19 @@ $('#modal-create-event').on("click", function () {
     console.log("createCategory: " + createCategory);
     console.log("createImage: " + createImage)
 });
+
+//This function will be called in the search click
+
+function searchEventByCategory() {
+  // Save the book they typed into the genre-search input
+  var categorySearched = $("#search-category").val();
+
+  // Make an AJAX get request to our api, including the user's genre in the url
+  $.get("/api/events?category=" + categorySearched, function (data) {
+
+    console.log(data);
+    // Call our renderEvent function to add our events to the page
+    // newArray = newArray.push(data);
+
+  });
+}

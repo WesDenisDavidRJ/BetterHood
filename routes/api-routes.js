@@ -16,10 +16,14 @@ module.exports = function(app) {
       });
 
     app.get("/api/events/", function(req, res) {
-        db.event.findAll({})
-        .then(function(dbEvent) {
-          res.json(dbEvent);
-        });
+      //find event by category
+    EventModel.findAll({
+      where: {
+        category: req.query.category
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
       });
 
   // Using the passport.authenticate middleware with our local strategy.
@@ -111,6 +115,17 @@ app.get("/api/register", function(req, res) {
       res.json(results);
     });
   });
+
+    // Get all event of a specific genre
+  function getEventByCategory(category, res) {
+    Event.findAll({
+      where: {
+        category: category
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
+  };
 
 app.post("/api/events", function(req, res) {
     console.log(req.body);
