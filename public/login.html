@@ -26,7 +26,7 @@
   
     <!-- Google Sign-in Meta and Script -->
     <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="424783041948-m784eijrjp3gegsdu204mp2s1jr4dtku.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="495769109297-e2mgpt6k8ca1u9r8n248tombmr1egva1.apps.googleusercontent.com">
     <!-- Note the "onload" parameter. That function is defined in reservations.js so we need to load
       reservations.js before this platform.js file loads. -->
 
@@ -81,6 +81,7 @@
                     <i class="material-icons left">people</i>Sign Up</a> -->
             </div>
             <div class="g-signin2" data-onsuccess="onSignIn"></div>
+           
 
             <div class="col m3 s6 center-align">
                 <a id="login" class="waves-effect waves-light btn-large green accent-4 modal-trigger" href="#modal1" href='/loginPage'>
@@ -90,7 +91,9 @@
             </div>
 
             <div class="col m3 hide-on-small-only center-align">
+                   
             </div>
+            <a href="#" onclick="signOut();">Sign out</a>
 
 
         </div>
@@ -122,6 +125,15 @@
     <script type="text/javascript" src="js/materialize.js"></script>
     <!-- Initialize Parallaz javascript -->
     <script type="text/javascript">
+        
+
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+            console.log('User signed out.');
+            });
+        }
+
         $(document).ready(function () {
             $('.parallax').parallax();
         });
