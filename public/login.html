@@ -20,6 +20,17 @@
     <script src="js/materialize.js"></script>
     <!--  -->
     <link type="text/css" rel="stylesheet" href="css/style.css" />
+
+      <!-- Script to handle Google Auth Info -->
+  <script src="/login.js"></script>
+  
+    <!-- Google Sign-in Meta and Script -->
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="424783041948-m784eijrjp3gegsdu204mp2s1jr4dtku.apps.googleusercontent.com">
+    <!-- Note the "onload" parameter. That function is defined in reservations.js so we need to load
+      reservations.js before this platform.js file loads. -->
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
@@ -110,35 +121,13 @@
                 </div>
 
             </div>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
             <div class="col m3 s6 center-align">
-
-                <!-- Modal Trigger -->
-                <a id="login-account" class="btn-large light-blue accent-3 modal-trigger" href="#modal2">
+                <a id="login" class="waves-effect waves-light btn-large green accent-4 modal-trigger" href="#modal1" href='/loginPage'>
+                    
                     <i class="material-icons left">transfer_within_a_station</i>Login</a>
-
-                <!-- Modal Structure -->
-                <div id="modal2" class="modal modal-fixed-footer">
-                    <div class="modal-content">
-                        <h4>Account Login</h4>
-                        <div class="row">
-                            <!-- user Email Field -->
-                            <div class="input-field col l12">
-                                <!-- removed class="validate" form link input field -->
-                                <input id="login-email" type="email">
-                                <label for="login-email">Email Address</label>
-                            </div>
-                            <!-- user Desctiption Field -->
-                            <div class="input-field col l12">
-                                <input id="user-login" type="password" name="password" class="validate" data-length="200">
-                                <label for="user-login">Password</label>
-                            </div>
-                        </div>
-                        <button class="btn-large light-blue accent-3" type="submit" name="login-submit" id="modal-login-account">
-                            <i class="material-icons left">add_circle_outline</i>Login</button>
-                    </div>
-                </div>
-
+                    
             </div>
 
             <div class="col m3 hide-on-small-only center-align">

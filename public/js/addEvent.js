@@ -3,16 +3,17 @@
 // The code in add.js handles what happens when the user clicks the "Add a Event" button.
 
 // When user clicks add-btn
-$("#ID to add user Denis").on("submit", function(event) {
+$("#modal-create-event").on("click", function(event) {
   event.preventDefault();
 
   // Make a newEvent object
   var newEvent = {
-    fdescription: $("#ID description Denis").val().trim(),
-    address: $("#ID address Denis").val().trim(),
-    date: $("#ID date Denis").val().trim(),
-    image: $("#ID image Denis").val().trim(),
-    category: $("#ID category Denis").val().trim()
+    name: createName,
+    description: createDescrip,
+    address: createAddress,
+    date: createDate,
+    image: createImage,
+    category: createCategory
   };
 
   // Send an AJAX POST-request with jQuery

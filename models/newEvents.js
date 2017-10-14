@@ -12,60 +12,55 @@ var sequelize = require("../config/connection.js");
 //Wes Update
 
 
-    var Event = sequelize.define("Event", {
+    var EventModel = sequelize.define("event", {
       name: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         validate: {
           len: [1]
         }
       },
-      descrip: {
-        type: DataTypes.STRING,
+      description: {
+        type: Sequelize.STRING,
         allowNull: false,
         validate: {
           len: [1]
         }
       },
       address: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        type: Sequelize.STRING,
+        allowNull: true,
         len: [1]
       },
       lat: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        type: Sequelize.STRING,
+        allowNull: true,
         len: [1]
       },
       lon: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        type: Sequelize.STRING,
+        allowNull: true,
         len: [1]
       },
       date: {
-        type: DataTypes.DATE,
+        type: Sequelize.STRING,
         allowNull: false,
         len: [1]
       },
       image: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        len: [1]
-      },
-      zipcode: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         len: [1]
       },
       category: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         defaultValue: "General Assistance"
       }
     });
 
 //Differnt color ??
   // Syncs with DB
-Event.sync();
+EventModel.sync();
 
-// Makes the Event Model available for other files (will also create a table)
-module.exports = Event;
+// Makes the EventModel Model available for other files (will also create a table)
+module.exports = EventModel;

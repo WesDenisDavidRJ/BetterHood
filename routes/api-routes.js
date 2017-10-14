@@ -1,9 +1,10 @@
-
+var EventModel = require("../models/newEvents.js");
 var db = require("../models");
 var passport = require("../config/passport")
 var accountSid = 'AC7e4e81cff80cf1d86872f2066ec1c675'; // Your Account SID from www.twilio.com/console
 var authToken = '572ee0ec91e3ff8e029b57e7b0a3ab71';   // Your Auth Token from www.twilio.com/console
 var twilio = require('twilio');
+const GoogleAuth = require('google-auth-library');
 
 module.exports = function(app) {
 
@@ -78,7 +79,7 @@ app.get("/api/register", function(req, res) {
   });
 
 
-// // Davids
+// // Davids Shoulp be able to delete per groups approval
 //   app.post("/api/users", function(req, res) {
 //     console.log(req.body);
 //     db.User.create({
@@ -91,7 +92,7 @@ app.get("/api/register", function(req, res) {
 //       res.json(dbUser);
 //     });
 //   });
-// // Davids
+// // Davids Shoulp be able to delete per groups approval
 //   app.post("/api/events", function(req, res) {
 //     console.log(req.body);
 //     db.Event.create({
@@ -108,9 +109,10 @@ app.get("/api/register", function(req, res) {
 
 // Add a user Wes update 
   app.post("/api/events", function(req, res) {
-    console.log(req.body);
     console.log("New Event:");
-    db.Event.create({
+    console.log(req.body);
+    EventModel.create({
+      name: req.body.name,
       description: req.body.description,
       address: req.body.address,
       date: req.body.date,
@@ -126,7 +128,7 @@ app.get("/api/register", function(req, res) {
   app.post("/api/users", function(req, res) {
     console.log("New User:");
     console.log(req.body);
-    db.User.create({
+    User.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
@@ -151,4 +153,32 @@ app.post("/api/events", function(req, res) {
         
         });
     });
+
+    // GAUTHSOME: Verify the logged-in Google user using the google-auth-library NPM package.
+    app.get('/api/auth', (req, res) => {
+      console.log('Attempting to auth');
+      const GOOGLE_CLIENT_ID = '495769109297-e2mgpt6k8ca1u9r8n248tombmr1egva1.apps.googleusercontent.com';
+      const auth = new GoogleAuth;
+      const client = new auth.OAuth2(GOOGLE_CLIENT_ID, '', '');
+      client.verifyIdToken(
+        req.query.token,
+        GOOGLE_CLIENT_ID,
+        // Or, if multiple clients access the backend:
+        //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3],
+        function (error, login) {
+          if (error) {
+            console.error(error);
+  
+            res.json({ error: error.message });
+            return;
+          }
+  
+          const payload = login.getPayload();
+          payload.valid = true;
+  
+          res.json(payload);
+        });
+  
+    });
+  
 };

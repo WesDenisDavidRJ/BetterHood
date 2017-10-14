@@ -16,38 +16,38 @@ var sequelize = require("../config/connection.js");
 
     var User = sequelize.define("User", {
       firstName: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         validate: {
           len: [1]
         }
       },
       lastName: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         validate: {
           len: [1]
         }
       },
       email: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         validate: {
           len: [1]
         }
       },
       phone: {
-        type: DataTypes.TEXT,
+        type: Sequelize.TEXT,
         allowNull: false,
         len: [1]
       },
       password: {
-        type: DataTypes.TEXT,
+        type: Sequelize.TEXT,
         allowNull: false,
         len: [1]
       },
       events: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: true,
         len: [1]
       },

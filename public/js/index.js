@@ -1,5 +1,6 @@
 // load materialize component js
 $(document).ready(function () {
+    $('.scrollspy').scrollSpy();
     $('select').material_select();
     $('.modal').modal();
     $('.tooltipped').tooltip({delay: 50});
@@ -12,6 +13,7 @@ $(document).ready(function () {
         closeOnSelect: false, // Close upon selecting a date,
         format: 'mm/dd/yyyy'
       });
+     
 });
 
 //////////////////////////////////////////////////
@@ -41,16 +43,16 @@ $('#modal-search-event').on("click", function () {
         } else {
            searchCategory = $('#search-category').val();
            searchStartDate = $('#search-start-date').val();
-           searchEndDate = $('#search-end-date').val().trim();
-           searchAddress = $('#search-street').val().trim() + ", " + $('#search-city').val().trim() + ", " + $('#search-state').val();
+           searchEndDate = $('#search-end-date').val();
+           searchAddress = $('#search-street').val() + ", " + $('#search-city').val() + ", " + $('#search-state').val();
 
            //probably don't need 
-           searchObj = {
-               category: searchCategory,
-               startDate: searchStartDate,
-               endDate: searchEndDate,
-               address: searchAddress
-           }
+        //    searchObj = {
+        //        category: searchCategory,
+        //        startDate: searchStartDate,
+        //        endDate: searchEndDate,
+        //        address: searchAddress
+        //    }
 
             //clear the Event Search fields
             let select = $('select');
@@ -63,6 +65,23 @@ $('#modal-search-event').on("click", function () {
             $('#search-city').val("");
             $('#search-state').val("");
         }
+
+
+        $.get("/api/events/", function(data) {
+            // db.Event.findAll({})
+
+            console.log(data);
+            
+            // .done(function(data) {
+            //     // Log the data we found
+            //     console.log(data);
+            //   });
+
+          })           
+           .done(function(data) {
+                // Log the data we found
+                console.log(data);
+              });
     console.log("search category: " + searchCategory);
     console.log("start date: " + searchStartDate);
     console.log("end date: " + searchEndDate);
@@ -93,7 +112,7 @@ $('#modal-create-event').on("click", function () {
     if ($('#create-image').val() == "") {
         createImage = "assets/event-placeholder.png"
     } else {
-        createImage = $('#create-image').val().trim();
+        createImage = $('#create-image').val();
     }
 
     if ($('#create-name').val() == ""||
@@ -106,10 +125,10 @@ $('#modal-create-event').on("click", function () {
         ) {
             alert("PLACEHOLDER - Will pop a modal asking user to fill in info");
         } else {
-            createName = $('#create-name').val().trim();
+            createName = $('#create-name').val();
             createDate = $('#create-date').val();
-            createDescrip = $('#create-descrip').val().trim();
-            createAddress = $('#create-street').val().trim() + ", " + $('#create-city').val().trim() + ", " + $('#create-state').val();
+            createDescrip = $('#create-descrip').val();
+            createAddress = $('#create-street').val() + ", " + $('#create-city').val() + ", " + $('#create-state').val();
             createCategory = $('#create-category').val();
 
             //object for the DB
@@ -134,6 +153,14 @@ $('#modal-create-event').on("click", function () {
             select.prop('selectedIndex', 0);
             select.material_select();
         }
+
+          // Send an AJAX POST-request with jQuery
+  $.post("/api/events", createObj)
+    // On success, run the following code
+    .done(function(data) {
+      // Log the data we found
+      console.log(data);
+    });
 
     console.log("createName: " + createName);
     console.log("createDate: " + createDate);
