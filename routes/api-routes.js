@@ -79,7 +79,7 @@ app.get("/api/register", function(req, res) {
   });
 
 
-// // Davids
+// // Davids Shoulp be able to delete per groups approval
 //   app.post("/api/users", function(req, res) {
 //     console.log(req.body);
 //     db.User.create({
@@ -92,7 +92,7 @@ app.get("/api/register", function(req, res) {
 //       res.json(dbUser);
 //     });
 //   });
-// // Davids
+// // Davids Shoulp be able to delete per groups approval
 //   app.post("/api/events", function(req, res) {
 //     console.log(req.body);
 //     db.Event.create({
