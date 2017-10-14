@@ -1,4 +1,4 @@
-/* * {border: 1px solid black} */
+* {border: 1px solid black}
 
 .user-img {
     max-width: 200px;
@@ -60,4 +60,21 @@
 div.start-date-div.col.l6,
 div.end-date-div.col.l6 {
     line-height: 1;
+}
+
+#card-heading {
+    color: #00B0FF;
+}
+
+#add-event-div {
+    margin-top: 6em;
+}
+
+ul.table-of-contents {
+    margin-right: 20px;
+  }
+
+.table-of-contents a.active {
+    margin-top: 80px;
+    border-left: 2px solid #00B0FF;
 }
