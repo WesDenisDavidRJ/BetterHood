@@ -16,7 +16,7 @@ module.exports = function(app) {
       });
 
     app.get("/api/events/", function(req, res) {
-        db.Event.findAll({})
+        db.event.findAll({})
         .then(function(dbEvent) {
           res.json(dbEvent);
         });
@@ -79,33 +79,7 @@ app.get("/api/register", function(req, res) {
   });
 
 
-// // Davids Shoulp be able to delete per groups approval
-//   app.post("/api/users", function(req, res) {
-//     console.log(req.body);
-//     db.User.create({
-//       firstName: req.body.firstName,
-//       lastName: req.body.lastName,
-//       email: req.body.email,
-//       phone: req.body.phone,
-//     })
-//     .then(function(dbUser) {
-//       res.json(dbUser);
-//     });
-//   });
-// // Davids Shoulp be able to delete per groups approval
-//   app.post("/api/events", function(req, res) {
-//     console.log(req.body);
-//     db.Event.create({
-//       description: req.body.description,
-//       address: req.body.address,
-//       date: req.body.date,
-//       image: req.body.image,
-//       category: req.body.category,
-//     })
-//     .then(function(dbUser) {
-//       res.json(dbUser);
-//     });
-//   });
+
 
 // Add a user Wes update 
   app.post("/api/events", function(req, res) {
