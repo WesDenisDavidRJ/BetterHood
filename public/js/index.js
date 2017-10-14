@@ -26,13 +26,18 @@ $('#search-event').on("click", function () {
 });
 
 
+let searchResults;
+let googleLocation;
+
 $('#modal-search-event').on("click", function () {
+    event.preventDefault();
+
     let searchCategory;
     let searchStartDate;
     let searchEndDate;
     let searchAddress;
     let searchObj;
-    let location;
+
 
     if ($('#search-category').val() == "" || 
         $('#search-start-date').val() == "" ||
@@ -46,7 +51,7 @@ $('#modal-search-event').on("click", function () {
            searchStartDate = $('#search-start-date').val();
            searchEndDate = $('#search-end-date').val();
            searchAddress = $('#search-street').val() + ", " + $('#search-city').val() + ", " + $('#search-state').val();
-           location = searchAddress;
+            googleLocation = searchAddress;
            //probably don't need 
         //    searchObj = {
         //        category: searchCategory,
@@ -58,6 +63,8 @@ $('#modal-search-event').on("click", function () {
         geocode();
 
         searchEventByCategory();
+
+        //check if searchResults.length = 0;
 
             //clear the Event Search fields
             let select = $('select');
@@ -168,7 +175,9 @@ function searchEventByCategory() {
   // Make an AJAX get request to our api, including the user's genre in the url
   $.get("/api/events?category=" + categorySearched, function (data) {
 
+    searchResults = data;
     console.log(data);
+    console.log(searchResults)
     // Call our renderEvent function to add our events to the page
     // newArray = newArray.push(data);
 
@@ -183,13 +192,15 @@ function geocode() {
 
     axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
             params: {
-                address: "3709 Praed Pl Fuquay-Varina NC",
+                address: googleLocation,
                 key: 'AIzaSyBW6TPdNKLWbxq92udGv6W46xMBtQ2BgSg'
             }
         })
         .then(function (response) {
             // Log full response
             console.log(response);
+
+            
         })
         .catch(function (error) {
             console.log(error);
