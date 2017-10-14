@@ -1,38 +1,50 @@
-$(document).ready(function() {
-    // Getting references to our form and inputs
-    var loginForm = $("form.login");
-    var emailInput = $("input#email-input");
-    var passwordInput = $("input#password-input");
-  
-    // When the form is submitted, we validate there's an email and password entered
-    loginForm.on("submit", function(event) {
-      event.preventDefault();
-      var userData = {
-        email: emailInput.val().trim(),
-        password: passwordInput.val().trim()
-      };
-  
-      if (!userData.email || !userData.password) {
-        return;
-      }
-  
-      // If we have an email and password we run the loginUser function and clear the form
-      loginUser(userData.email, userData.password);
-      emailInput.val("");
-      passwordInput.val("");
-    });
-  
-    // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
-    function loginUser(email, password) {
-      $.post("/api/login", {
-        email: email,
-        password: password
-      }).then(function(data) {
-        window.location.replace(data);
-        // If there's an error, log the error
-      }).catch(function(err) {
-        console.log(err);
-      });
+// Materliaze js component
+$(document).ready(function () {
+    $('.parallax').parallax();
+
+    $('.modal').modal();
+});
+var firstName;
+var lastName;
+var userEmail;
+var userPassword;
+var confirmPassword;
+var userDescrip;
+var loginEmail;
+var userLogin;
+
+// $('#create-account').on("click", function () {
+//     console.log("hello from Signup!!!!")
+// })
+
+// $('#login-account').on("click", function () {
+//     console.log("hello from login!!!!")
+// })
+
+$('#modal-create-account').on("click", function () {
+    if ($("#user-password").val().trim() != $("#confirm-password").val().trim()) {
+        alert("Passwords do not match.");
+    } else if ($('#user-first-name').val() == "" ||
+        $('#user-last-name').val() == "" ||
+        $('#user-email').val() == "" ||
+        $('#user-password').val() == "" ||
+        $('#confirm-password').val() == "") {
+        alert("Please fill in missing info");
+    } else {
+        firstName = $('#user-first-name').val();
+        lastName = $('#user-last-name').val();
+        userEmail = $('#user-email').val();
+        userPassword = $('#user-password').val();
+        confirmPassword = $('#confirm-password').val();
+        userDescrip = $('#user-descrip').val();
+        $('#modal1').modal('close');
+        // clear the Event Search fields
+        $('#user-first-name').val("");
+        $('#user-last-name').val("");
+        $('#user-email').val("");
+        $('#user-password').val("");
+        $('#confirm-password').val("");
+        $('#user-descrip').val("");
     }
 
   ///////////////////////////

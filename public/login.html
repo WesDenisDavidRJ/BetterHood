@@ -64,21 +64,62 @@
 
             <div class="col m3 s6 center-align">
                 <!-- Modal Trigger -->
-                <a class="waves-effect waves-light btn-large light-blue accent-3 modal-trigger" href="#modal1">
-                    <i class="material-icons left">people</i>Sign Up</a>
+                <a id="create-account" class="btn-large green accent-4 modal-trigger" href="#modal1">
+                    <i class="material-icons left">people</i>Create Account</a>
 
                 <!-- Modal Structure -->
                 <div id="modal1" class="modal modal-fixed-footer">
                     <div class="modal-content">
-                        <h4>Modal Header</h4>
-                        <p>A bunch of text</p>
+                        <h4>Create Account</h4>
+                        <div class="row">
+                            <!-- user First Name Field -->
+                            <div class="input-field col l6">
+                                <input id="user-first-name" type="text" class="validate" data-length="40">
+                                <label for="user-first-name">First Name</label>
+                            </div>
+
+                            <!-- user Last Name Field -->
+                            <div class="input-field col l6">
+                                <input id="user-last-name" type="text" class="validate" data-length="40">
+                                <label for="user-last-name">Last Name</label>
+                            </div>
+
+                            <!-- user Email Field -->
+                            <div class="input-field col l12">
+                                <!-- removed class="validate" form link input field -->
+                                <input id="user-email" type="email">
+                                <label for="user-email">Email Address</label>
+
+                            </div>                           
+
+                            <div class="row">
+                                <div class="input-field col l6">
+                                    <input id="user-password" type="password" class="validate" data-length="20">
+                                    <label for="user-password">Enter Password</label>
+                                </div>
+
+                                <!-- Start Zipcode -->
+                                <div class="input-field col l6">
+                                    <input id="confirm-password" type="password" class="validate" data-length="20">
+                                    <label for="confirm-password">Confirm Password</label>
+                                </div>
+                            </div>
+                            <!-- user Desctiption Field -->
+                            <div class="input-field col l12">
+                                    <input id="user-descrip" type="text" data-length="800">
+                                    <label for="user-descrip">Bio/Info (Optional)</label>
+    
+                                </div>
+
+
+                            <button class="btn green accent-4 hoverable" width="200px" type="submit" name="get-started" id="modal-create-account">
+                                <i class="material-icons left">add_circle_outline</i>Create Account</button>
+                        </div>
+
                     </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-action modal-close">Agree</a>
-                    </div>
+
                 </div>
-                <!-- <a id="signUp" class="waves-effect waves-light btn-large light-blue accent-3">
-                    <i class="material-icons left">people</i>Sign Up</a> -->
+
             </div>
             <div class="g-signin2" data-onsuccess="onSignIn"></div>
            
@@ -103,9 +144,7 @@
             <!--                      -->
         </div>
         <div class="row container center-align">
-            <a class="blue-text text-lighten-3" href="#" target="_blank">API Friends List</a>
-            <span class="blue-text text-lighten-3"> | </span>
-            <a class="blue-text text-lighten-3" href="https://github.com/WesDenisDavidRJ/BetterHood" target="_blank">GitHub Repo</a>
+            <!-- Room for more content -->
         </div>
     </div>
     <!-- bottom parallax-->
@@ -124,6 +163,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.js"></script>
     <!-- Initialize Parallaz javascript -->
+
     <script type="text/javascript">
         
 
@@ -141,6 +181,9 @@
             // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
             $('.modal').modal();
         });
+
+    <script type="text/javascript" src="js/login.js"></script>
+
     </script>
 </body>
 

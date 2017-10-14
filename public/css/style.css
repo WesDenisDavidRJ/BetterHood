@@ -27,3 +27,11 @@ div.parallax-container {
     margin: 20px;
     font-size: 40px;
 }
+
+#login-account {
+    width: 250px;
+}
+
+#create-account {
+    width: 250px;
+}
