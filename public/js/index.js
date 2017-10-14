@@ -32,6 +32,7 @@ $('#modal-search-event').on("click", function () {
     let searchEndDate;
     let searchAddress;
     let searchObj;
+    let location;
 
     if ($('#search-category').val() == "" || 
         $('#search-start-date').val() == "" ||
@@ -45,7 +46,7 @@ $('#modal-search-event').on("click", function () {
            searchStartDate = $('#search-start-date').val();
            searchEndDate = $('#search-end-date').val();
            searchAddress = $('#search-street').val() + ", " + $('#search-city').val() + ", " + $('#search-state').val();
-
+           location = searchAddress;
            //probably don't need 
         //    searchObj = {
         //        category: searchCategory,
@@ -53,6 +54,8 @@ $('#modal-search-event').on("click", function () {
         //        endDate: searchEndDate,
         //        address: searchAddress
         //    }
+
+        geocode();
 
         searchEventByCategory();
 
@@ -170,4 +173,25 @@ function searchEventByCategory() {
     // newArray = newArray.push(data);
 
   });
+}
+
+
+function geocode() {
+    // Prevent actual submi
+
+    // var location = document.getElementById('location-input').value;
+
+    axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+            params: {
+                address: "3709 Praed Pl Fuquay-Varina NC",
+                key: 'AIzaSyBW6TPdNKLWbxq92udGv6W46xMBtQ2BgSg'
+            }
+        })
+        .then(function (response) {
+            // Log full response
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 }
