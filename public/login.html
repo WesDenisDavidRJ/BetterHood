@@ -21,9 +21,9 @@
     <!--  -->
     <link type="text/css" rel="stylesheet" href="css/style.css" />
 
-      <!-- Script to handle Google Auth Info -->
-  <script src="/login.js"></script>
-  
+    <!-- Script to handle Google Auth Info -->
+    <script src="/login.js"></script>
+
     <!-- Google Sign-in Meta and Script -->
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="495769109297-e2mgpt6k8ca1u9r8n248tombmr1egva1.apps.googleusercontent.com">
@@ -43,7 +43,7 @@
     </div>
     <div class="parallax-container ">
         <div class="parallax">
-            <img src="assets/IMG_20151010_103547412.jpg">
+            <img src="assets/volunteer7.jpg">
         </div>
 
     </div>
@@ -90,7 +90,7 @@
                                 <input id="user-email" type="email">
                                 <label for="user-email">Email Address</label>
 
-                            </div>                           
+                            </div>
 
                             <div class="row">
                                 <div class="input-field col l6">
@@ -106,10 +106,10 @@
                             </div>
                             <!-- user Desctiption Field -->
                             <div class="input-field col l12">
-                                    <input id="user-descrip" type="text" data-length="800">
-                                    <label for="user-descrip">Bio/Info (Optional)</label>
-    
-                                </div>
+                                <input id="user-descrip" type="text" data-length="800">
+                                <label for="user-descrip">Bio/Info (Optional)</label>
+
+                            </div>
 
 
                             <button class="btn green accent-4 hoverable" width="200px" type="submit" name="get-started" id="modal-create-account">
@@ -121,15 +121,51 @@
                 </div>
 
             </div>
-            <div class="g-signin2" data-onsuccess="onSignIn"></div>
-           
+
 
             <div class="col m3 s6 center-align">
-                <a id="login" class="waves-effect waves-light btn-large green accent-4 modal-trigger" href="#modal1" href='/loginPage'>
+                <!-- Modal Trigger -->
+                <a id="login-account" class="btn-large light-blue accent-3 modal-trigger" href="#modal2">
+                    <i class="material-icons left">people</i>Login Account</a>
+
+                <!-- Modal Structure -->
+                <div id="modal2" class="modal modal-fixed-footer">
+                    <div class="modal-content">
+                        <h4>Create Account</h4>
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3">                                
+                                <form class="login">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" id="email-input" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Password</label>
+                                        <input type="password" class="form-control" id="password-input" placeholder="Password">
+                                    </div>
+                                    <button type="submit" class="btn btn-default">Login</button>
+                                </form>
+                                <br />
+                                <p>Or sign up
+                                    <a href="/">here</a>
+                                </p>
+                            </div>
+
+                            <button class="btn light-blue accent-3 modal-trigger" type="submit" name="get-started" id="modal-login-account">
+                                    <i class="material-icons left">transfer_within_a_station</i>Login</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- <div class="col m3 s6 center-align">
+                <a id="login-account" class="btn-large light-blue accent-3 modal-trigger" href="#modal2" href='/loginPage'>
                     
                     <i class="material-icons left">transfer_within_a_station</i>Login</a>
                     
-            </div>
+            </div> -->
 
             <div class="col m3 hide-on-small-only center-align">
                    
@@ -150,7 +186,7 @@
     <!-- bottom parallax-->
     <div class="parallax-container">
         <div class="parallax">
-            <img src="assets/Spring-Cleanup.jpg">
+            <img src="assets/volunteer10.jpg">
         </div>
     </div>
     <!-- footer -->
