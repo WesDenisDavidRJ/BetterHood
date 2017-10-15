@@ -21,8 +21,7 @@
     <!--  -->
     <link type="text/css" rel="stylesheet" href="css/style.css" />
 
-    <!-- Script to handle Google Auth Info -->
-    <script src="/login.js"></script>
+   >
 
     <!-- Google Sign-in Meta and Script -->
     <meta name="google-signin-scope" content="profile email">
@@ -87,8 +86,16 @@
                             <!-- user Email Field -->
                             <div class="input-field col l12">
                                 <!-- removed class="validate" form link input field -->
-                                <input id="user-email" type="email">
+                                <input id="user-email" type="text">
                                 <label for="user-email">Email Address</label>
+
+                            </div>
+
+                             <!-- user phone Field -->
+                             <div class="input-field col l12">
+                                <!-- removed class="validate" form link input field -->
+                                <input id="user-phone" type="text">
+                                <label for="user-phone">Phone Number</label>
 
                             </div>
 
@@ -143,16 +150,16 @@
                                         <label for="exampleInputPassword1">Password</label>
                                         <input type="password" class="form-control" id="password-input" placeholder="Password">
                                     </div>
-                                    <button type="submit" class="btn btn-default">Login</button>
+                                    <button class="btn light-blue accent-3 modal-trigger" type="submit" name="get-started" id="modal-login-account">
+                                            <i class="material-icons left">transfer_within_a_station</i>Login</a>
                                 </form>
                                 <br />
-                                <p>Or sign up
-                                    <a href="/">here</a>
+                                <p>
+                                    <href="#modal1"><p style="color:blue">or sign up here</p>
                                 </p>
                             </div>
 
-                            <button class="btn light-blue accent-3 modal-trigger" type="submit" name="get-started" id="modal-login-account">
-                                    <i class="material-icons left">transfer_within_a_station</i>Login</a>
+                            
                         </div>
 
                     </div>
@@ -160,17 +167,12 @@
                 </div>
 
             </div>
-            <!-- <div class="col m3 s6 center-align">
-                <a id="login-account" class="btn-large light-blue accent-3 modal-trigger" href="#modal2" href='/loginPage'>
-                    
-                    <i class="material-icons left">transfer_within_a_station</i>Login</a>
-                    
-            </div> -->
+           
 
             <div class="col m3 hide-on-small-only center-align">
                    
             </div>
-            <a href="#" onclick="signOut();">Sign out</a>
+            
 
 
         </div>
@@ -203,12 +205,6 @@
     <script type="text/javascript">
         
 
-        function signOut() {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
-            console.log('User signed out.');
-            });
-        }
 
         $(document).ready(function () {
             $('.parallax').parallax();
@@ -218,9 +214,10 @@
             $('.modal').modal();
         });
 
-    <script type="text/javascript" src="js/login.js"></script>
+    
 
     </script>
+    <script type="text/javascript" src="js/login.js"></script>
 </body>
 
 </html>
