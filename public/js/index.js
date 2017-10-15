@@ -1,5 +1,32 @@
+//These variables will hold the lat and long that will be added to a event
+
 let createLat;
 let createLong;
+
+//This will be the array that stores the results by event
+
+let categoryResults = [];
+
+//This will be the array that stores the results by date
+
+let dateResults = [];
+
+//The start date of the search param
+let startDate;
+
+//The end date of the search param
+let endDate;
+
+
+//Variables that are created inside the click of the search event modal
+let searchCategory;
+let searchStartDate;
+let searchEndDate;
+let searchAddress;
+let searchObj;
+
+let searchResults;
+let googleLocation;
 
 
 // load materialize component js
@@ -7,7 +34,9 @@ $(document).ready(function () {
     $('.scrollspy').scrollSpy();
     $('select').material_select();
     $('.modal').modal();
-    $('.tooltipped').tooltip({delay: 50});
+    $('.tooltipped').tooltip({
+        delay: 50
+    });
     $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 2, // Creates a dropdown of 2 years to control year,
@@ -16,8 +45,8 @@ $(document).ready(function () {
         close: 'Ok',
         closeOnSelect: false, // Close upon selecting a date,
         format: 'mm/dd/yyyy'
-      });
-     
+    });
+
 });
 
 //////////////////////////////////////////////////
@@ -30,33 +59,26 @@ $('#search-event').on("click", function () {
 });
 
 
-let searchResults;
-let googleLocation;
-
 $('#modal-search-event').on("click", function () {
     event.preventDefault();
 
-    let searchCategory;
-    let searchStartDate;
-    let searchEndDate;
-    let searchAddress;
-    let searchObj;
 
 
-    if ($('#search-category').val() == "" || 
+
+    if ($('#search-category').val() == "" ||
         $('#search-start-date').val() == "" ||
         $('#search-end-date').val() == "" ||
         $('#search-street').val() == "" ||
         $('#search-city').val() == "" ||
-        $('#search-state').val() == "" ) {
-            alert("PLACEHOLDER - Will pop a modal asking user to fill in info");
-        } else {
-           searchCategory = $('#search-category').val();
-           searchStartDate = $('#search-start-date').val();
-           searchEndDate = $('#search-end-date').val();
-           searchAddress = $('#search-street').val() + ", " + $('#search-city').val() + ", " + $('#search-state').val();
-            googleLocation = searchAddress;
-           //probably don't need 
+        $('#search-state').val() == "") {
+        alert("PLACEHOLDER - Will pop a modal asking user to fill in info");
+    } else {
+        searchCategory = $('#search-category').val();
+        searchStartDate = $('#search-start-date').val();
+        searchEndDate = $('#search-end-date').val();
+        searchAddress = $('#search-street').val() + ", " + $('#search-city').val() + ", " + $('#search-state').val();
+        googleLocation = searchAddress;
+        //probably don't need 
         //    searchObj = {
         //        category: searchCategory,
         //        startDate: searchStartDate,
@@ -68,19 +90,21 @@ $('#modal-search-event').on("click", function () {
 
         searchEventByCategory();
 
+        
+
         //check if searchResults.length = 0;
 
-            //clear the Event Search fields
-            let select = $('select');
-            $("form input").val("");
-            select.prop('selectedIndex', 0);
-            select.material_select();
-            $('#search-start-date').val("");
-            $('#search-end-date').val("");
-            $('#search-street').val("");
-            $('#search-city').val("");
-            $('#search-state').val("");
-        }
+        //clear the Event Search fields
+        let select = $('select');
+        $("form input").val("");
+        select.prop('selectedIndex', 0);
+        select.material_select();
+        $('#search-start-date').val("");
+        $('#search-end-date').val("");
+        $('#search-street').val("");
+        $('#search-city').val("");
+        $('#search-state').val("");
+    }
 
 
     console.log("search category: " + searchCategory);
@@ -120,15 +144,15 @@ $('#modal-create-event').on("click", function () {
         createImage = $('#create-image').val();
     }
 
-    if ($('#create-name').val() == ""||
-        $('#create-date').val() == ""||
-        $('#create-descrip').val() == ""||
-        $('#create-street').val() == ""||
-        $('#create-city').val() == ""||
-        $('#create-state').val() == ""||
+    if ($('#create-name').val() == "" ||
+        $('#create-date').val() == "" ||
+        $('#create-descrip').val() == "" ||
+        $('#create-street').val() == "" ||
+        $('#create-city').val() == "" ||
+        $('#create-state').val() == "" ||
         $('#create-category').val() == ""
-        ) {
-            alert("PLACEHOLDER - Will pop a modal asking user to fill in info");
+    ) {
+        alert("PLACEHOLDER - Will pop a modal asking user to fill in info");
     } else {
         createName = $('#create-name').val();
         createDate = $('#create-date').val();
@@ -136,9 +160,9 @@ $('#modal-create-event').on("click", function () {
         createAddress = $('#create-street').val() + ", " + $('#create-city').val() + ", " + $('#create-state').val();
         createCategory = $('#create-category').val();
         googleLocationCreate = createAddress;
-    
-    
-        geocodeCreate().then(function(){
+
+
+        geocodeCreate().then(function () {
 
             //object for the DB
             createObj = {
@@ -152,7 +176,7 @@ $('#modal-create-event').on("click", function () {
                 category: createCategory
 
             }
-            
+
             //clear the Event Search fields
             $('#create-name').val("");
             $('#create-date').val("");
@@ -168,7 +192,7 @@ $('#modal-create-event').on("click", function () {
             // Send an AJAX POST-request with jQuery
             $.post("/api/events", createObj)
                 // On success, run the following code
-                .done(function(data) {
+                .done(function (data) {
                     // Log the data we found
                     console.log(data);
                 });
@@ -187,19 +211,23 @@ $('#modal-create-event').on("click", function () {
 //This function will be called in the search click
 
 function searchEventByCategory() {
-  // Save the book they typed into the genre-search input
-  var categorySearched = $("#search-category").val();
+    // Save the book they typed into the genre-search input
+    var categorySearched = $("#search-category").val();
 
-  // Make an AJAX get request to our api, including the user's genre in the url
-  $.get("/api/events?category=" + categorySearched, function (data) {
+    // Make an AJAX get request to our api, including the user's genre in the url
+    $.get("/api/events?category=" + categorySearched, function (data) {
 
-    searchResults = data;
-    console.log(data);
-    console.log(searchResults)
-    // Call our renderEvent function to add our events to the page
-    // newArray = newArray.push(data);
+        searchResults = data;
+        categoryResults = data;
 
-  });
+        // console.log(data);
+        // console.log(searchResults);
+        console.log(categoryResults);
+        // Call our renderEvent function to add our events to the page
+        // newArray = newArray.push(data);
+
+    });
+    getEventsByDate();
 }
 
 
@@ -218,7 +246,7 @@ function geocode() {
             // Log full response
             console.log(response);
 
-            
+
         })
         .catch(function (error) {
             console.log(error);
@@ -246,9 +274,35 @@ function geocodeCreate() {
             createLong = createLongFloat.toString();
             console.log(createLat);
             console.log(createLong);
-            
+
         })
         .catch(function (error) {
             console.log(error);
         });
+}
+
+//This function will start search for the event based on the meeting the time requirments
+
+function getEventsByDate() {
+
+    startDate = Date.parse(searchStartDate);
+    endDate = Date.parse(searchEndDate);
+
+    for (var i = 0; i < categoryResults.length; i++) {
+
+        //This will be the date of each event of the results
+
+        let resultEventDate = Date.parse(categoryResults[i].date);
+
+        //this will be checking if event date fits in search param
+        // var d1 = Date.parse("01-11-2014");
+        // var d2 = Date.parse("01-10-2014");
+        // if (d1 > d2) {
+        //     alert ("Error!");
+        // }
+        if (resultEventDate >= startDate && resultEventDate <= endDate) {
+            dateResults.push(categoryResults[i])
+        }
+    }
+    console.log(dateResults);
 }
