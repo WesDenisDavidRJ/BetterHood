@@ -17,6 +17,15 @@ let startDate;
 //The end date of the search param
 let endDate;
 
+//This is going to be the results based on distance
+let distanceResults = [];
+
+//This will be the absolute result of the lat and long searched
+let absLatNumSearched;
+let absLngNumSearched;
+
+
+
 
 //Variables that are created inside the click of the search event modal
 let searchCategory;
@@ -88,22 +97,20 @@ $('#modal-search-event').on("click", function () {
 
         geocode();
 
-        searchEventByCategory();
-
         
 
         //check if searchResults.length = 0;
 
         //clear the Event Search fields
-        let select = $('select');
-        $("form input").val("");
-        select.prop('selectedIndex', 0);
-        select.material_select();
-        $('#search-start-date').val("");
-        $('#search-end-date').val("");
-        $('#search-street').val("");
-        $('#search-city').val("");
-        $('#search-state').val("");
+        // let select = $('select');
+        // $("form input").val("");
+        // select.prop('selectedIndex', 0);
+        // select.material_select();
+        // $('#search-start-date').val("");
+        // $('#search-end-date').val("");
+        // $('#search-street').val("");
+        // $('#search-city').val("");
+        // $('#search-state').val("");
     }
 
 
@@ -246,6 +253,11 @@ function geocode() {
         .then(function (response) {
             // Log full response
             console.log(response);
+            let searchRawLat = response.data.results[0].geometry.location.lat;
+            let searchRawLon = response.data.results[0].geometry.location.lng;
+            absLngNumSearched = Math.abs(searchRawLon);
+            absLatNumSearched = Math.abs(searchRawLon);
+            searchEventByCategory()
 
 
         })
@@ -304,6 +316,32 @@ function getEventsByDate() {
         if (resultEventDate >= startDate && resultEventDate <= endDate) {
             dateResults.push(categoryResults[j])
         }
+        getEventsByDistance()
     }
     console.log(dateResults);
+}
+
+function getEventsByDistance() {
+
+        for (var k = 0; k < dateResults.length; k++) {
+    //taking the lats and longs from test array converting to abs nums
+    var compLat = parseFloat(dateResults[k].lat);
+    var absCompLat = Math.abs(compLat);
+    var compLng = parseFloat(dateResults[k].lng);
+    var absCompLng = Math.abs(compLng);
+    var absDifferenceLat = Math.abs(absCompLat - absLatNumSearched);
+    var absDifferenceLong = Math.abs(absCompLng - absLngNumSearched);
+
+    //I will need to store lat and long from search google api
+
+    if (absDifferenceLat < 1 && absDifferenceLong < 1) {
+        distanceResults.push(dateResults[k])
+
+    } else {
+        console.log(dateResults[k].name + "is NOT in your area")
+    }
+
+}
+console.log(distanceResults);
+    
 }
