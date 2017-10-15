@@ -225,9 +225,10 @@ function searchEventByCategory() {
         console.log(categoryResults);
         // Call our renderEvent function to add our events to the page
         // newArray = newArray.push(data);
+        getEventsByDate();
 
     });
-    getEventsByDate();
+    
 }
 
 
@@ -288,11 +289,11 @@ function getEventsByDate() {
     startDate = Date.parse(searchStartDate);
     endDate = Date.parse(searchEndDate);
 
-    for (var i = 0; i < categoryResults.length; i++) {
+    for (var j = 0; j < categoryResults.length; j++) {
 
         //This will be the date of each event of the results
 
-        let resultEventDate = Date.parse(categoryResults[i].date);
+        let resultEventDate = Date.parse(categoryResults[j].date);
 
         //this will be checking if event date fits in search param
         // var d1 = Date.parse("01-11-2014");
@@ -301,7 +302,7 @@ function getEventsByDate() {
         //     alert ("Error!");
         // }
         if (resultEventDate >= startDate && resultEventDate <= endDate) {
-            dateResults.push(categoryResults[i])
+            dateResults.push(categoryResults[j])
         }
     }
     console.log(dateResults);
