@@ -113,12 +113,24 @@ app.get("/api/register", function(req, res) {
       phone: req.body.phone,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      userEmail: req.body.Email,
-      userPassword: req.body.Password,
+      userEmail: req.body.userEmail,
+      userPassword: req.body.userPassword,
       userDescrip: req.body.Descrip
     }).then(function(results) {
       res.json(results);
     });
+    client.messages.create({
+      body: `Hello from BetterHood.org.  Thank you for registering.  Your password is ${req.body.userPassword}`,
+      to: '+1'+req.body.phone,  // Text this number
+      from: '+19197525090' // From a valid Twilio number
+     }, function(err, message){
+         if (err) {
+             console.log(err);
+         } else {
+             console.log(message.sid)
+         }
+         
+         });
   });
 
     // Get all event of a specific genre
@@ -132,10 +144,10 @@ app.get("/api/register", function(req, res) {
     });
   };
 
-app.post("/api/events", function(req, res) {
+app.post("/api/users", function(req, res) {
     console.log(req.body);
     client.messages.create({
-     body: `Hello from BetterHood.org.  The event you signed up for is ${req.body}`,
+     body: `Hello from BetterHood.org.  The event you signed your information ${req.body}`,
      to: '+1'+req.body.phoneNumber,  // Text this number
      from: '+19197525090' // From a valid Twilio number
     }, function(err, message){
