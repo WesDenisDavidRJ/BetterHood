@@ -208,16 +208,14 @@ $("#modal-create-event").on("click", function() {
         });
     });
   }
+  $("#create-modal").modal("close");
 });
 
 //This function will be called in the search click
 
 function searchEventByCategory() {
-  // Save the book they typed into the genre-search input
-  var categorySearched = $("#search-category").val();
-
   // Make an AJAX get request to our api, including the user's genre in the url
-  $.get("/api/events?category=" + categorySearched, function(data) {
+  $.get("/api/events?category=" + searchCategory, function(data) {
     searchResults = data;
     categoryResults = data;
 
@@ -228,8 +226,7 @@ function searchEventByCategory() {
 }
 
 function geocode() {
-  axios
-    .get("https://maps.googleapis.com/maps/api/geocode/json", {
+  axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
       params: {
         address: googleLocation,
         key: "AIzaSyBW6TPdNKLWbxq92udGv6W46xMBtQ2BgSg"
@@ -319,8 +316,9 @@ function getEventsByDistance() {
       '<div class="res-event row container hoverable z-depth-1">'
     );
     let resultImgDiv = $('<div class="res-img col l3">');
-    let resultImg = $('<img class="responsive-img">');
+    let resultImg = $('<img class="responsive-img event-img">');
     resultImg.attr("src", distanceResults[l].image);
+    
     resultImgDiv.append(resultImg);
 
     resultDiv.append(resultImgDiv);
@@ -328,27 +326,26 @@ function getEventsByDistance() {
     let resultInfoDiv = $('<div class="res-info col l7">');
     let resultEventName = $('<p class="res-name">');
     resultEventName.text(distanceResults[l].name);
-
     let resultDescripTitle = $('<p class="res-descrip-title">')
     resultDescripTitle.text("Description:");
     let resultDescrip = $('<p class="res-descrip">');
     resultDescrip.text(distanceResults[l].description);
     let resultDateTitle = $('<p class="res-date-title">')
-    resultDateTitle.text("Description:");
+    resultDateTitle.text("Date:");
     let resultDate = $('<p class="res-date">');
     resultDate.text(distanceResults[l].date);
-
+    let resultLocTitle = $('<p class="res-loc-title">')
+    resultLocTitle.text("Location:");
     let resultLoc = $('<p class="res-loc">');
     resultLoc.text(distanceResults[l].address);
 
     resultInfoDiv.append(resultEventName);
     resultInfoDiv.append(resultDescripTitle);
     resultInfoDiv.append(resultDescrip);
-
+    resultInfoDiv.append(resultDateTitle);
     resultInfoDiv.append(resultDate);
-
+    resultInfoDiv.append(resultLocTitle);
     resultInfoDiv.append(resultLoc);
-
 
     resultDiv.append(resultInfoDiv);
 
