@@ -59,6 +59,7 @@ $('#modal-create-account').on("click", function () {
       // Log the data we found
       console.log(data);
     });
+    window.open("index.html");
 
   
   });
