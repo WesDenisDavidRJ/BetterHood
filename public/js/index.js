@@ -57,7 +57,12 @@ function errorModal(mes){
     $('.error-message').text(mes);
     $('#error-modal').modal('open');
 }
-    
+
+
+function createdModal(mes){
+  $('.created-message').text(mes);
+  $('#created-modal').modal('open');
+}
 
 
 //////////////////////////////////////////////////
@@ -67,11 +72,15 @@ function errorModal(mes){
 //////////////////////////////////////////////////
 $("#search-event").on("click", function() {
   $("#search-modal").modal("open");
+  $("#my-search").empty();
 });
 
 $("#modal-search-event").on("click", function() {
   event.preventDefault();
-
+  
+  categoryResults = [];
+  dateResults = [];
+  distanceResults = [];
      //check to make sure a valid date range is entered
     if (new Date($('#search-start-date').val()) <= new Date($('#search-end-date').val())) {
         searchStartDate = $('#search-start-date').val();
@@ -79,11 +88,12 @@ $("#modal-search-event").on("click", function() {
     }else{
         let dateMessage = "Please enter valid date range.";
         errorModal(dateMessage);
+        return;
     }   
 
 
   if (
-    $("#search-category").val() == "" ||
+    $("#search-category").val() == null ||
     $("#search-start-date").val() == "" ||
     $("#search-end-date").val() == "" ||
     $("#search-street").val() == "" ||
@@ -107,18 +117,18 @@ $("#modal-search-event").on("click", function() {
 
     geocode();
 
+        //clear the Event Search fields
+        let select = $('select');
+        $("form input").val("");
+        select.prop('selectedIndex', 0);
+        select.material_select();
+        $('#search-start-date').val("");
+        $('#search-end-date').val("");
+        $('#search-street').val("");
+        $('#search-city').val("");
+        $('#search-state').val("");
   }
 
-    //clear the Event Search fields
-    let select = $('select');
-    $("form input").val("");
-    select.prop('selectedIndex', 0);
-    select.material_select();
-    $('#search-start-date').val("");
-    $('#search-end-date').val("");
-    $('#search-street').val("");
-    $('#search-city').val("");
-    $('#search-state').val("");
 });
 
 //////////////////////////////////////////////////
@@ -156,11 +166,12 @@ $("#modal-create-event").on("click", function() {
     $("#create-street").val() == "" ||
     $("#create-city").val() == "" ||
     $("#create-state").val() == "" ||
-    $("#create-category").val() == ""
+    $("#create-category").val() == null
   ) {
     //if not, pop a modal asking the user to enter data for all fields
     let createMessage = "Please enter all required information and then click [Create Event].";
     errorModal(createMessage);
+    return;
   } else {
     createName = $("#create-name").val();
     createDate = $("#create-date").val();
@@ -205,6 +216,9 @@ $("#modal-create-event").on("click", function() {
         .done(function(data) {
           // Log the data we found
           console.log(data);
+
+          let createdMessage = "Event Created!";
+          createdModal(createdMessage);
         });
     });
   }
