@@ -17,7 +17,7 @@ let startDate;
 //The end date of the search param
 let endDate;
 
-//This is going to be the results based on distance ****FInal Array Param*** Denis
+//This is going to be the results based on distance
 let distanceResults = [];
 
 //This will be the absolute result of the lat and long searched
@@ -42,15 +42,23 @@ $(document).ready(function() {
     delay: 50
   });
   $(".datepicker").pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 2, // Creates a dropdown of 2 years to control year,
+    selectMonths: true, 
+    selectYears: 2, 
     today: "Today",
     clear: "Clear",
     close: "Ok",
-    closeOnSelect: false, // Close upon selecting a date,
+    closeOnSelect: true,
     format: "mm/dd/yyyy"
   });
 });
+
+// function for displaying error messages in the error modal
+function errorModal(mes){
+    $('.error-message').text(mes);
+    $('#error-modal').modal('open');
+}
+    
+
 
 //////////////////////////////////////////////////
 //
@@ -64,6 +72,16 @@ $("#search-event").on("click", function() {
 $("#modal-search-event").on("click", function() {
   event.preventDefault();
 
+     //check to make sure a valid date range is entered
+    if (new Date($('#search-start-date').val()) <= new Date($('#search-end-date').val())) {
+        searchStartDate = $('#search-start-date').val();
+        searchEndDate = $('#search-end-date').val();
+    }else{
+        let dateMessage = "Please enter valid date range.";
+        errorModal(dateMessage);
+    }   
+
+
   if (
     $("#search-category").val() == "" ||
     $("#search-start-date").val() == "" ||
@@ -72,11 +90,12 @@ $("#modal-search-event").on("click", function() {
     $("#search-city").val() == "" ||
     $("#search-state").val() == ""
   ) {
-    alert("PLACEHOLDER - Will pop a modal asking user to fill in info");
+    let searchMessage = "Please enter all required information and then click [Search Events].";
+    errorModal(searchMessage);
   } else {
     searchCategory = $("#search-category").val();
-    searchStartDate = $("#search-start-date").val();
-    searchEndDate = $("#search-end-date").val();
+    // searchStartDate = $("#search-start-date").val();
+    // searchEndDate = $("#search-end-date").val();
     searchAddress =
       $("#search-street").val() +
       ", " +
@@ -129,7 +148,7 @@ $("#modal-create-event").on("click", function() {
   } else {
     createImage = $("#create-image").val();
   }
-
+  // check to make data has been entered into all fields
   if (
     $("#create-name").val() == "" ||
     $("#create-date").val() == "" ||
@@ -139,7 +158,9 @@ $("#modal-create-event").on("click", function() {
     $("#create-state").val() == "" ||
     $("#create-category").val() == ""
   ) {
-    alert("PLACEHOLDER - Will pop a modal asking user to fill in info");
+    //if not, pop a modal asking the user to enter data for all fields
+    let createMessage = "Please enter all required information and then click [Create Event].";
+    errorModal(createMessage);
   } else {
     createName = $("#create-name").val();
     createDate = $("#create-date").val();
@@ -207,8 +228,6 @@ function searchEventByCategory() {
 }
 
 function geocode() {
-
-
   axios
     .get("https://maps.googleapis.com/maps/api/geocode/json", {
       params: {
@@ -231,8 +250,6 @@ function geocode() {
 }
 
 function geocodeCreate() {
-
-
   return axios
     .get("https://maps.googleapis.com/maps/api/geocode/json", {
       params: {
@@ -285,7 +302,6 @@ function getEventsByDistance() {
     var absDifferenceLat = Math.abs(absCompLat - absLatNumSearched);
     var absDifferenceLong = Math.abs(absCompLng - absLngNumSearched);
 
-    //I will need to store lat and long from search google api
 
     if (absDifferenceLat < 1 && absDifferenceLong < 1) {
       distanceResults.push(dateResults[k]);
@@ -296,6 +312,8 @@ function getEventsByDistance() {
   }
 
   console.log(distanceResults);
+
+  //take the results from the search and build div(s) to display the results
   for (var l = 0; l < distanceResults.length; l++) {
     let resultDiv = $(
       '<div class="res-event row container hoverable z-depth-1">'
@@ -304,16 +322,19 @@ function getEventsByDistance() {
     let resultImg = $('<img class="responsive-img">');
     resultImg.attr("src", distanceResults[l].image);
     resultImgDiv.append(resultImg);
+
     resultDiv.append(resultImgDiv);
 
     let resultInfoDiv = $('<div class="res-info col l7">');
-
     let resultEventName = $('<p class="res-name">');
     resultEventName.text(distanceResults[l].name);
 
+    let resultDescripTitle = $('<p class="res-descrip-title">')
+    resultDescripTitle.text("Description:");
     let resultDescrip = $('<p class="res-descrip">');
     resultDescrip.text(distanceResults[l].description);
-
+    let resultDateTitle = $('<p class="res-date-title">')
+    resultDateTitle.text("Description:");
     let resultDate = $('<p class="res-date">');
     resultDate.text(distanceResults[l].date);
 
@@ -321,9 +342,14 @@ function getEventsByDistance() {
     resultLoc.text(distanceResults[l].address);
 
     resultInfoDiv.append(resultEventName);
+    resultInfoDiv.append(resultDescripTitle);
     resultInfoDiv.append(resultDescrip);
+
     resultInfoDiv.append(resultDate);
+
     resultInfoDiv.append(resultLoc);
+
+
     resultDiv.append(resultInfoDiv);
 
     $(".search-results").append(resultDiv);
