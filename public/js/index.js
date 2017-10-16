@@ -17,7 +17,7 @@ let startDate;
 //The end date of the search param
 let endDate;
 
-//This is going to be the results based on distance
+//This is going to be the results based on distance ****FInal Array Param*** Denis
 let distanceResults = [];
 
 //This will be the absolute result of the lat and long searched
@@ -256,7 +256,7 @@ function geocode() {
             let searchRawLat = response.data.results[0].geometry.location.lat;
             let searchRawLon = response.data.results[0].geometry.location.lng;
             absLngNumSearched = Math.abs(searchRawLon);
-            absLatNumSearched = Math.abs(searchRawLon);
+            absLatNumSearched = Math.abs(searchRawLat);
             searchEventByCategory()
 
 
@@ -327,7 +327,7 @@ function getEventsByDistance() {
     //taking the lats and longs from test array converting to abs nums
     var compLat = parseFloat(dateResults[k].lat);
     var absCompLat = Math.abs(compLat);
-    var compLng = parseFloat(dateResults[k].lng);
+    var compLng = parseFloat(dateResults[k].lon);
     var absCompLng = Math.abs(compLng);
     var absDifferenceLat = Math.abs(absCompLat - absLatNumSearched);
     var absDifferenceLong = Math.abs(absCompLng - absLngNumSearched);
