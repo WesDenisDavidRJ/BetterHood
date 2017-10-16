@@ -59,11 +59,9 @@ $('#modal-create-account').on("click", function () {
       // Log the data we found
       console.log(data);
     });
-<<<<<<< HEAD
-    window.open ("index.html");
-=======
+
     window.open("index.html");
->>>>>>> 3cfd701936089d69038ac9116caa16f470933a95
+
 
   
   });
