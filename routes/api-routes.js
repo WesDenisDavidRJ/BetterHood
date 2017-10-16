@@ -120,7 +120,7 @@ app.get("/api/register", function(req, res) {
       res.json(results);
     });
     client.messages.create({
-      body: `Hello from BetterHood.org.  Thank you for registering.  Your password is ${req.body.userPassword}`,
+      body: `Hello from BetterHood.org.  Thank you ${req.body.firstName} for registering.  Your password is ${req.body.userPassword}`,
       to: '+1'+req.body.phone,  // Text this number
       from: '+19197525090' // From a valid Twilio number
      }, function(err, message){
