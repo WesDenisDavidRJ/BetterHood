@@ -10,7 +10,7 @@ Our app starts with the ability to login and create a user profile. Then you wil
 
 If the user chooses to creat an event it will it will enter a event name, date, description, address, image and category. When the user clicks to create the event it will first go the google geolocation API and it will take the user input and return the lattitude and the longitude of the event. All of this data will be stored in a database and it will be accessible by other users.
 
-If the user chooses to search an event the user will 
+If the user chooses to search an event the user will enter the parameters of category, start date, end date, address. The google api will be called to established a base lattitude and longitude. It will send a query to the database and redused the results based on the category, the time of the event and then the proximity of the location. It will dynamically populate the results to the page so that the user can connect with a local event that fit where they can make a significant impact
 
 
 
