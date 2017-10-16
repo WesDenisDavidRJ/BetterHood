@@ -99,6 +99,7 @@
     "moment": "^2.18.1",
     "moment-timezone": "^0.5.13",
     "ms": "^2.0.0",
+    "mysql": "^2.15.0",
     "mysql2": "^1.4.2",
     "named-placeholders": "^1.1.1",
     "negotiator": "^0.6.1",
