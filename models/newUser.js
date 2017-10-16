@@ -14,7 +14,7 @@ var sequelize = require("../config/connection.js");
 
 
 
-    var User = sequelize.define("newUser", {
+    var User = sequelize.define("newuser", {
       firstName: {
         type: Sequelize.STRING,
         allowNull: false,
