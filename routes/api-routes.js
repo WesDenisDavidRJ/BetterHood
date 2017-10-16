@@ -1,4 +1,5 @@
 var EventModel = require("../models/newEvents.js");
+var User = require("../models/newUser.js")
 var db = require("../models");
 var passport = require("../config/passport")
 var accountSid = 'AC7e4e81cff80cf1d86872f2066ec1c675'; // Your Account SID from www.twilio.com/console
@@ -16,10 +17,14 @@ module.exports = function(app) {
       });
 
     app.get("/api/events/", function(req, res) {
-        db.Event.findAll({})
-        .then(function(dbEvent) {
-          res.json(dbEvent);
-        });
+      //find event by category
+    EventModel.findAll({
+      where: {
+        category: req.query.category
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
       });
 
   // Using the passport.authenticate middleware with our local strategy.
@@ -79,33 +84,7 @@ app.get("/api/register", function(req, res) {
   });
 
 
-// // Davids
-//   app.post("/api/users", function(req, res) {
-//     console.log(req.body);
-//     db.User.create({
-//       firstName: req.body.firstName,
-//       lastName: req.body.lastName,
-//       email: req.body.email,
-//       phone: req.body.phone,
-//     })
-//     .then(function(dbUser) {
-//       res.json(dbUser);
-//     });
-//   });
-// // Davids
-//   app.post("/api/events", function(req, res) {
-//     console.log(req.body);
-//     db.Event.create({
-//       description: req.body.description,
-//       address: req.body.address,
-//       date: req.body.date,
-//       image: req.body.image,
-//       category: req.body.category,
-//     })
-//     .then(function(dbUser) {
-//       res.json(dbUser);
-//     });
-//   });
+
 
 // Add a user Wes update 
   app.post("/api/events", function(req, res) {
@@ -115,6 +94,8 @@ app.get("/api/register", function(req, res) {
       name: req.body.name,
       description: req.body.description,
       address: req.body.address,
+      lat: req.body.lat,
+      lon: req.body.lon,
       date: req.body.date,
       image: req.body.image,
       category: req.body.category,
@@ -129,19 +110,44 @@ app.get("/api/register", function(req, res) {
     console.log("New User:");
     console.log(req.body);
     User.create({
+      phone: req.body.phone,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      email: req.body.email,
-      phone: req.body.phone,
+      userEmail: req.body.userEmail,
+      userPassword: req.body.userPassword,
+      userDescrip: req.body.Descrip
     }).then(function(results) {
       res.json(results);
     });
+    client.messages.create({
+      body: `Hello from BetterHood.org.  Thank you for registering.  Your password is ${req.body.userPassword}`,
+      to: '+1'+req.body.phone,  // Text this number
+      from: '+19197525090' // From a valid Twilio number
+     }, function(err, message){
+         if (err) {
+             console.log(err);
+         } else {
+             console.log(message.sid)
+         }
+         
+         });
   });
 
-app.post("/api/events", function(req, res) {
+    // Get all event of a specific genre
+  function getEventByCategory(category, res) {
+    Event.findAll({
+      where: {
+        category: category
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
+  };
+
+app.post("/api/users", function(req, res) {
     console.log(req.body);
     client.messages.create({
-     body: `Hello from BetterHood.org.  The event you signed up for is ${req.body}`,
+     body: `Hello from BetterHood.org.  The event you signed your information ${req.body}`,
      to: '+1'+req.body.phoneNumber,  // Text this number
      from: '+19197525090' // From a valid Twilio number
     }, function(err, message){

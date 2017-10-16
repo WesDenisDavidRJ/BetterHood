@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Favicon -->
-    <!-- <link rel="shortcut icon" type="img/png" href="assets/favicon.png"> -->
+    <link rel="shortcut icon" type="img/png" href="assets/bh-favicon.png">
 
     <!-- newest jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -22,6 +22,9 @@
 
     <!-- custom stylesheet -->
     <link type="text/css" rel="stylesheet" href="css/index.css" />
+
+    <!--axios cdn-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -36,7 +39,7 @@
 
 
     <!-- User Info Div -->
-    <div class="user-profile-div container row z-depth-4 section scrollspy" id="my-profile">
+    <div class="user-profile-div container row z-depth-4 section" id="my-profile">
         <div class="user-img-div center col l3">
             <img class="user-img circle " src="assets/avatar.png" alt="Current User's Profile Pic">
             <p class="user-name">Henry Helper</p>
@@ -74,7 +77,7 @@
     <div class="divider"></div>
 
     <!-- saved events -->
-    <div class="saved-events section scrollspy" id="my-saved">
+    <div class="saved-events section" id="my-saved">
         <h5 class="saved-title center-align">Your saved events:</h5>
         <div class="row container">
             <div class="col l3">
@@ -175,79 +178,12 @@
     <div class="divider"></div>
 
     <!-- start results Div -->
-    <div class="search-results section scrollspy" id="my-search">
+    <div class="search-results section" id="my-search">
         <h5 class="saved-title center-align">Search results:</h5>
-        <div class="res-event row container hoverable z-depth-1">
-            <div class="res-img col l3">
-                <img class="responsive-img" src="assets/event-placeholder.png" alt="Event Image">
-                <!-- <img class="responsive-img" src="https://i.pinimg.com/736x/4d/8c/94/4d8c949e21393328cc866ff9a22ef847--bowties-pink-lemonade.jpg" alt="Event Image"> -->
-            </div>
-            <div class="res-info col l7">
-                <p class="res-name">Default Event Name</p>
-                <p class="res-descrip-title">Description:
-                    <span class="res-descrip"> Austin etsy vape irony kitsch street art kale chips 3 wolf moon hoodie knausgaard pug selfies +1 pickled
-                        jean shorts. Glossier echo park coloring book meggings air plant listicle 4 asymmetrical hello! </span>
-                </p>
-                <p class="res-date-title">Date:
-                    <span class="res-date"> 10/31/17</span>
-                </p>
-                <p class="res-loc-title">Location:
-                    <span class="res-loc"> 123 Any Street, Anywhere, NC</span>
-                </p>
-
-            </div>
-            <div class="center col l2" id="add-event-div">
-                <a class="btn-floating btn-large waves-effect waves-light light-blue accent-3 hoverable">
-                    <i class="material-icons valign-wrapper">check</i>
-                </a>
-                <p>Join Event</p>
-            </div>
-        </div>
-
-        <div class="res-event row container hoverable z-depth-1">
-            <div class="res-img col l3">
-                <img <img class="responsive-img" src="assets/event-placeholder.png" alt="Event Image">
-            </div>
-            <div class="res-info col l7">
-                <p class="res-name">Default Event Name</p>
-                <p class="res-descrip-title">Description:
-                    <span class="res-descrip"> Austin etsy vape irony kitsch street art kale chips 3 wolf moon hoodie knausgaard pug selfies +1 pickled
-                        jean shorts. Glossier echo park coloring book meggings air plant listicle 4 asymmetrical hello! </span>
-                </p>
-                <p class="res-date-title">Date:
-                    <span class="res-date"> 10/31/17</span>
-                </p>
-                <p class="res-loc-title">Location:
-                    <span class="res-loc"> 123 Any Street, Anywhere, NC</span>
-                </p>
-
-            </div>
-            <div class="center col l2" id="add-event-div">
-                <a class="btn-floating btn-large waves-effect waves-light light-blue accent-3 hoverable">
-                    <i class="material-icons valign-wrapper">check</i>
-                </a>
-                <p>Join Event</p>
-            </div>
-        </div>
     </div>
     <!-- start results Div -->
 
 
-
-        <!--  Scrollspy -->
-        <div class="col hide-on-small-only m3 l2 right">
-                <ul class="section table-of-contents">
-                    <li>
-                        <a href="#my-profile">My Profile</a>
-                    </li>
-                    <li>
-                        <a href="#my-saved">Saved Events</a>
-                    </li>
-                    <li>
-                        <a href="#my-search">Search Results</a>
-                    </li>
-                </ul>
-            </div>
 
     <!-- Search Events Modal -->
     <div id="search-modal" class="modal">
@@ -257,8 +193,8 @@
             <!-- Start Dropdown -->
             <!-- <p class="date-title">Event Type</p> -->
             <div class="input-field col l12">
-                <select multiple id="search-category">
-                    <option value="" disabled selected>Choose the types of events you're interested in:</option>
+                <select id="search-category">
+                    <option value="" disabled selected>Choose the type of event you're interested in:</option>
                     <option value="General Assistance">General Assistance</option>
                     <option value="Educational">Educational</option>
                     <option value="Political">Political</option>
@@ -379,14 +315,24 @@
     </div>
     <!-- End Create Modal -->
 
-
-
+    <!-- Start Error Modal-->
+    <div id="error-modal" class="modal">
+        <div class="modal-content">
+            <h4>Error!</h4>
+            <p class="error-message"></p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+    <!-- End Error Modal -->
 
 
     <!-- Materialize JS -->
     <script type="text/javascript" src="js/materialize.js"></script>
     <!-- Custom Script -->
     <script type="text/javascript" src="js/index.js"></script>
+
 </body>
 
 </html>

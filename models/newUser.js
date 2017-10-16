@@ -14,7 +14,7 @@ var sequelize = require("../config/connection.js");
 
 
 
-    var User = sequelize.define("User", {
+    var User = sequelize.define("newuser", {
       firstName: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -29,7 +29,7 @@ var sequelize = require("../config/connection.js");
           len: [1]
         }
       },
-      email: {
+      userEmail: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
@@ -41,12 +41,23 @@ var sequelize = require("../config/connection.js");
         allowNull: false,
         len: [1]
       },
-      password: {
+      userPassword: {
         type: Sequelize.TEXT,
         allowNull: false,
         len: [1]
       },
+      email: {
+        type: Sequelize.STRING,
+        allowNull: true,
+        defaultValue: "admin@betterhood.org",
+        len: [1]
+      },
       events: {
+        type: Sequelize.STRING,
+        allowNull: true,
+        len: [1]
+      },
+      userDescrip: {
         type: Sequelize.STRING,
         allowNull: true,
         len: [1]

@@ -21,12 +21,10 @@
     <!--  -->
     <link type="text/css" rel="stylesheet" href="css/style.css" />
 
-      <!-- Script to handle Google Auth Info -->
-  <script src="/login.js"></script>
-  
+
     <!-- Google Sign-in Meta and Script -->
     <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="424783041948-m784eijrjp3gegsdu204mp2s1jr4dtku.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="495769109297-e2mgpt6k8ca1u9r8n248tombmr1egva1.apps.googleusercontent.com">
     <!-- Note the "onload" parameter. That function is defined in reservations.js so we need to load
       reservations.js before this platform.js file loads. -->
 
@@ -43,54 +41,134 @@
     </div>
     <div class="parallax-container ">
         <div class="parallax">
-            <img src="assets/IMG_20151010_103547412.jpg">
+            <img src="assets/volunteer7.jpg">
         </div>
 
     </div>
     <!-- BetterHood info -->
     <div class="section white center-align">
         <div class="row container ">
-            <h2 class="header main-tag">Are you looking for a way to help your "local" community?</h2>
-            <p class="grey-text text-darken-3 lighten-3 main-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel justo ut neque elementum tempus ac non nulla.
-                Maecenas eleifend dignissim aliquam. Sed vel consequat enim. Vivamus venenatis arcu vitae nulla vestibulum,
-                in convallis tellus dignissim. Praesent ac fringilla dui. Nullam sed nulla ac metus imperdiet scelerisque
-                mattis in diam.!</p>
+            <h2 class="header main-tag">The most impactful way to give.</h2>
+            <p class="grey-text text-darken-3 lighten-3 main-body">When you donate your hard earned time and money, you want it to benefit the people that need it most, not end up in the pocket of a millionaire charity CEO.  That’s why we created BetterHood...a grassroots, non-corporate collective of people getting involved in their local community and helping to make the world a better, more positive place. </p>
             <hr>
         </div>
-        <p class="prom-banner-title">Help make our community a better place!</p>
+        <p class="prom-banner-title">Join up and start changing lives today!</p>
         <div class="row center-align promise-container">
             <div class="col m3 hide-on-small-only center-align">
             </div>
 
             <div class="col m3 s6 center-align">
                 <!-- Modal Trigger -->
-                <a class="waves-effect waves-light btn-large light-blue accent-3 modal-trigger" href="#modal1">
-                    <i class="material-icons left">people</i>Sign Up</a>
+                <a id="create-account" class="btn-large green accent-4 modal-trigger" href="#modal1">
+                    <i class="material-icons left">people</i>Create Account</a>
 
                 <!-- Modal Structure -->
                 <div id="modal1" class="modal modal-fixed-footer">
                     <div class="modal-content">
-                        <h4>Modal Header</h4>
-                        <p>A bunch of text</p>
+                        <h4>Create Account</h4>
+                        <div class="row">
+                            <!-- user First Name Field -->
+                            <div class="input-field col l6">
+                                <input id="user-first-name" type="text" class="validate" data-length="40">
+                                <label for="user-first-name">First Name</label>
+                            </div>
+
+                            <!-- user Last Name Field -->
+                            <div class="input-field col l6">
+                                <input id="user-last-name" type="text" class="validate" data-length="40">
+                                <label for="user-last-name">Last Name</label>
+                            </div>
+
+                            <!-- user Email Field -->
+                            <div class="input-field col l12">
+                                <!-- removed class="validate" form link input field -->
+                                <input id="user-email" type="text">
+                                <label for="user-email">Email Address</label>
+
+                            </div>
+
+                             <!-- user phone Field -->
+                             <div class="input-field col l12">
+                                <!-- removed class="validate" form link input field -->
+                                <input id="user-phone" type="text">
+                                <label for="user-phone">Phone Number</label>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col l6">
+                                    <input id="user-password" type="password" class="validate" data-length="20">
+                                    <label for="user-password">Enter Password</label>
+                                </div>
+
+                                <!-- Start Zipcode -->
+                                <div class="input-field col l6">
+                                    <input id="confirm-password" type="password" class="validate" data-length="20">
+                                    <label for="confirm-password">Confirm Password</label>
+                                </div>
+                            </div>
+                            <!-- user Desctiption Field -->
+                            <div class="input-field col l12">
+                                <input id="user-descrip" type="text" data-length="800">
+                                <label for="user-descrip">Bio/Info (Optional)</label>
+
+                            </div>
+
+
+                            <button class="btn green accent-4 hoverable" width="200px" type="submit" name="get-started" id="modal-create-account">
+                                <i class="material-icons left">add_circle_outline</i>Create Account</button>
+                        </div>
+
                     </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-action modal-close">Agree</a>
-                    </div>
+
                 </div>
-                <!-- <a id="signUp" class="waves-effect waves-light btn-large light-blue accent-3">
-                    <i class="material-icons left">people</i>Sign Up</a> -->
+
             </div>
-            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
 
             <div class="col m3 s6 center-align">
-                <a id="login" class="waves-effect waves-light btn-large green accent-4 modal-trigger" href="#modal1" href='/loginPage'>
-                    
-                    <i class="material-icons left">transfer_within_a_station</i>Login</a>
-                    
+                <!-- Modal Trigger -->
+                <a id="login-account" class="btn-large light-blue accent-3 modal-trigger" href="#modal2">
+                    <i class="material-icons left">people</i>Login Account</a>
+
+                <!-- Modal Structure -->
+                <div id="modal2" class="modal modal-fixed-footer">
+                    <div class="modal-content">
+                        <h4>Create Account</h4>
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3">                                
+                                <form class="login">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" id="email-input" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Password</label>
+                                        <input type="password" class="form-control" id="password-input" placeholder="Password">
+                                    </div>
+                                    <button class="btn light-blue accent-3 modal-trigger" type="submit" name="get-started" id="modal-login-account">
+                                            <i class="material-icons left">transfer_within_a_station</i>Login</a>
+                                </form>
+                                <br />
+                                <p>
+                                    <href="#modal1"><p style="color:blue">or sign up here</p>
+                                </p>
+                            </div>
+
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
+           
 
             <div class="col m3 hide-on-small-only center-align">
+                   
             </div>
+            
 
 
         </div>
@@ -100,15 +178,13 @@
             <!--                      -->
         </div>
         <div class="row container center-align">
-            <a class="blue-text text-lighten-3" href="#" target="_blank">API Friends List</a>
-            <span class="blue-text text-lighten-3"> | </span>
-            <a class="blue-text text-lighten-3" href="https://github.com/WesDenisDavidRJ/BetterHood" target="_blank">GitHub Repo</a>
+            <!-- Room for more content -->
         </div>
     </div>
     <!-- bottom parallax-->
     <div class="parallax-container">
         <div class="parallax">
-            <img src="assets/Spring-Cleanup.jpg">
+            <img src="assets/volunteer10.jpg">
         </div>
     </div>
     <!-- footer -->
@@ -121,7 +197,11 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.js"></script>
     <!-- Initialize Parallaz javascript -->
+
     <script type="text/javascript">
+        
+
+
         $(document).ready(function () {
             $('.parallax').parallax();
         });
@@ -129,7 +209,11 @@
             // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
             $('.modal').modal();
         });
+
+    
+
     </script>
+    <script type="text/javascript" src="js/login.js"></script>
 </body>
 
 </html>

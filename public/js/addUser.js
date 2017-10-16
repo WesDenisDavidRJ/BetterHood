@@ -3,15 +3,20 @@
 // The code in add.js handles what happens when the user clicks the "Add a book" button.
 
 // When user clicks add-btn
-$("#ID to add user Denis").on("submit", function(event) {
-  event.preventDefault();
+$("#modal-create-account").on("submit", function(event) {
+  
+  console.log("clicked")
 
   // Make a newBook object
   var newUser = {
-    firstName: $("#ID frirstname Denis").val().trim(),
-    lastName: $("#ID lastname Denis").val().trim(),
-    email: $("#ID email Denis").val().trim(),
-    phone: $("#ID phone Denis").val().trim()
+    firstName: $("#user-first-name").val().trim(),
+    lastName: $("#user-last-name").val().trim(),
+    userEmail: $("#user-email").val().trim(),
+    phone: $("#user-phone").val().trim(),
+    userPassword: $("user-password").val().trim(),
+    userDescrip: $("#user-descrip").val().trim()
+  
+
   };
 
 

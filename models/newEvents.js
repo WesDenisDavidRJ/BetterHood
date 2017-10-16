@@ -12,7 +12,7 @@ var sequelize = require("../config/connection.js");
 //Wes Update
 
 
-    var EventModel = sequelize.define("event", {
+    var EventModel = sequelize.define("eventmodel", {
       name: {
         type: Sequelize.STRING,
         allowNull: false,
